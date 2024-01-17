@@ -7,6 +7,7 @@ public partial class Spike : StaticBody2D
 	public AttackComponent Attack;
 	[Export]
 	public HealthComponent Health;
+
 	
 	private String DeathBy = "Death by Spike";
 
@@ -19,6 +20,7 @@ public partial class Spike : StaticBody2D
 	// Called when an entity enters the collision shape.
 	public void _on_hitbox_body_entered(Node2D body)
 	{
+		GD.Print(body);
 		if (body is Player player)
 		{
 			player.HitPlayer(1, DeathBy);

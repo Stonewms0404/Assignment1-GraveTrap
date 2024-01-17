@@ -4,8 +4,8 @@ using System;
 public partial class Player : CharacterBody2D
 {
 	//Normal Movement varibles.
-	public float Speed;
-	public float MaxSpeed;
+	public float Speed = 15.0f;
+	public float MaxSpeed = 300.0f;
 	public int facing = 0;
 	public const float JumpVelocity = -600.0f;
 	public float movement = 0.0f;
@@ -14,6 +14,9 @@ public partial class Player : CharacterBody2D
 
 	//Animation Variable.
 	protected AnimationPlayer anim;
+
+	public Timer PlayerHitCooldown;
+	public AnimationPlayer hitAnim;
 
 	[Signal]
 	public delegate void ToggleDeathMenuEventHandler(String DeathMsg);
@@ -38,6 +41,8 @@ public partial class Player : CharacterBody2D
 		facing = 1;
 		DashCooldown.CooldownOver += _OnDashCooldownCooldownOver;
 		anim = (AnimationPlayer)GetNode("AnimationPlayer");
+		hitAnim = (AnimationPlayer)GetNode("PlayerHitAnimation");
+		PlayerHitCooldown = (Timer)GetNode("Player/PlayerHitCooldown");
 		anim.Active = true;
 		anim.Play("Idle_Left");
 	}
@@ -52,34 +57,6 @@ public partial class Player : CharacterBody2D
 		int direction = (int)MoveInput;
 
 		//Creates the move direction by the speed and direction.
-		velocity = MovePlayer(velocity, MoveInput);
-
-		// Add the gravity.
-		if (!IsOnFloor())
-		{
-			velocity.Y += gravity * (float)delta;
-		}
-
-		// Handle Jump.
-		if (Input.IsActionJustPressed("jump") && IsOnFloor())
-		{
-			velocity = Jump(velocity);
-		}
-		
-		//Set Animation of the player.
-		SetAnimation(anim, velocity, direction);
-
-		// Calls the function for dashing and checks input within the dashing function.
-		velocity = Dash(velocity);
-		
-		Velocity = velocity;
-		Velocity.Normalized();
-		MoveAndSlide();
-	}
-	
-	//Move the Player Function.
-	public Vector2 MovePlayer(Vector2 velocity, float MoveInput)
-	{
 		if (MoveInput != 0)
 		{
 			if (MoveInput < 0)
@@ -119,7 +96,27 @@ public partial class Player : CharacterBody2D
 			velocity.X = movement;
 		}
 
-		return velocity;
+		// Add the gravity.
+		if (!IsOnFloor())
+		{
+			velocity.Y += gravity * (float)delta;
+		}
+
+		// Handle Jump.
+		if (Input.IsActionJustPressed("jump") && IsOnFloor())
+		{
+			velocity = Jump(velocity);
+		}
+		
+		//Set Animation of the player.
+		SetAnimation(anim, velocity, direction);
+
+		// Calls the function for dashing and checks input within the dashing function.
+		velocity = Dash(velocity);
+		
+		Velocity = velocity;
+		Velocity.Normalized();
+		MoveAndSlide();
 	}
 
 	//Animation Function.
@@ -198,6 +195,10 @@ public partial class Player : CharacterBody2D
 		if (Health.GetHealth() <= 0)
 		{
 			Death(DeathBy);
+		}
+		else
+		{
+			PlayerHitCooldown.Start();
 		}
 	}
 }

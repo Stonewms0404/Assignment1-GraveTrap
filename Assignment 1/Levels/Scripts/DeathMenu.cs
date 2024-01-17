@@ -15,7 +15,7 @@ public partial class DeathMenu : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		DeathBy = (Label)GetNode("DeathBy");
+		DeathBy = (Label)GetNode("TextureRect/DeathBy");
 		Hide();
 		player.ToggleDeathMenu += _OnPlayerToggleDeathMenu;
 	}
@@ -27,7 +27,7 @@ public partial class DeathMenu : Control
 		gamemanager.AbleToPause = false;
 		GetTree().Paused = true;
 		Show();
-		TryAgainButton.GrabFocus();
+		TryAgainButton.FocusButton();
 	}
 
 	private void _on_try_again_button_pressed()

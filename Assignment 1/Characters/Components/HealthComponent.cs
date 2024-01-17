@@ -3,7 +3,7 @@ using System;
 
 public partial class HealthComponent : Node2D
 {
-	public int Health;
+	private int Health;
 
 	public void SetHealth(int amount)
 	{

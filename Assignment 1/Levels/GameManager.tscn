@@ -36,7 +36,8 @@ DashCooldown = NodePath("TextureProgressBar2")
 position = Vector2(2, 0)
 zoom = Vector2(1.5, 1.5)
 limit_left = -241
-limit_top = -250
+limit_top = -470
+limit_right = 7185
 limit_bottom = 610
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
@@ -66,13 +67,45 @@ tint_under = Color(0, 0, 0, 1)
 tint_progress = Color(0, 1, 0.492, 1)
 script = ExtResource("9_5itvm")
 player = NodePath("..")
+metadata/_edit_use_anchors_ = true
 
 [node name="DashCooldown" type="Timer" parent="Player/TextureProgressBar2"]
 wait_time = 2.0
 
-[node name="Enemies" type="Node" parent="."]
+[node name="PlayerHitCooldown" type="Timer" parent="Player"]
+wait_time = 2.0
 
-[node name="Spikes" parent="." instance=ExtResource("9_jxqpr")]
-position = Vector2(-122, 198)
+[node name="Obstacles" type="Node" parent="."]
+
+[node name="Spikes2" parent="Obstacles" instance=ExtResource("9_jxqpr")]
+position = Vector2(4492, 489)
+
+[node name="Spikes3" parent="Obstacles" instance=ExtResource("9_jxqpr")]
+position = Vector2(4457, 505)
+
+[node name="Spikes5" parent="Obstacles" instance=ExtResource("9_jxqpr")]
+position = Vector2(4668, 457)
+
+[node name="Spikes6" parent="Obstacles" instance=ExtResource("9_jxqpr")]
+position = Vector2(4823, 441)
+
+[node name="Spikes8" parent="Obstacles" instance=ExtResource("9_jxqpr")]
+position = Vector2(4920, 409)
+
+[node name="Spikes9" parent="Obstacles" instance=ExtResource("9_jxqpr")]
+position = Vector2(5079, 393)
+
+[node name="Spikes11" parent="Obstacles" instance=ExtResource("9_jxqpr")]
+position = Vector2(5017, 393)
+
+[node name="Spikes13" parent="Obstacles" instance=ExtResource("9_jxqpr")]
+position = Vector2(5220, 377)
+
+[node name="Spikes14" parent="Obstacles" instance=ExtResource("9_jxqpr")]
+position = Vector2(5258, 521)
+
+[node name="Spikes15" parent="Obstacles" instance=ExtResource("9_jxqpr")]
+position = Vector2(5470, 521)
 
 [connection signal="timeout" from="Player/TextureProgressBar2/DashCooldown" to="Player/TextureProgressBar2" method="_on_dash_cooldown_timeout"]
+[connection signal="timeout" from="Player/PlayerHitCooldown" to="Player" method="_on_player_hit_cooldown_timeout"]

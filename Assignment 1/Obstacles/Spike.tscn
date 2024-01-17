@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnuu8dll8sw5r"]
+[gd_scene load_steps=7 format=3 uid="uid://dnuu8dll8sw5r"]
 
 [ext_resource type="Script" path="res://Obstacles/Spike.cs" id="1_hmi42"]
 [ext_resource type="PackedScene" uid="uid://b4rbm0kyxhucb" path="res://Characters/Components/attack_component.tscn" id="2_2i104"]
@@ -12,9 +12,6 @@ b = Vector2(21, 10)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pho1c"]
 a = Vector2(12, -6)
 b = Vector2(5, 10)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1q7q1"]
-size = Vector2(16, 16)
 
 [node name="Spikes" type="StaticBody2D" node_paths=PackedStringArray("Attack", "Health")]
 script = ExtResource("1_hmi42")
@@ -30,10 +27,6 @@ shape = SubResource("SegmentShape2D_xq3o7")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-13, -2)
 shape = SubResource("SegmentShape2D_pho1c")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_1q7q1")
-metadata/_edit_lock_ = true
 
 [node name="AttackComponent" parent="." instance=ExtResource("2_2i104")]
 
