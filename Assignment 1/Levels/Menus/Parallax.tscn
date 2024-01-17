@@ -1,0 +1,108 @@
+[gd_scene load_steps=3 format=3 uid="uid://ys0p5xf0gbum"]
+
+[ext_resource type="Texture2D" uid="uid://b3pie3xc8n70b" path="res://Assets/Backgrounds/backgroundEmpty.png" id="1_a37h8"]
+[ext_resource type="Texture2D" uid="uid://biv517lm1dw7y" path="res://Assets/Backgrounds/backgroundColorForest.png" id="2_s516e"]
+
+[node name="Parallax" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Background1" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(242, 122)
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(2048, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background1"]
+modulate = Color(0.0627451, 0.0627451, 0.0784314, 1)
+position = Vector2(871, 141)
+texture = ExtResource("1_a37h8")
+metadata/_edit_lock_ = true
+
+[node name="Background3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(242, 122)
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(2048, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background3"]
+self_modulate = Color(0.0627451, 0.0627451, 0.0784314, 1)
+position = Vector2(1895, 141)
+texture = ExtResource("1_a37h8")
+metadata/_edit_lock_ = true
+
+[node name="Background2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(242, 122)
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(2048, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background2"]
+self_modulate = Color(0.0627451, 0.0627451, 0.0784314, 1)
+position = Vector2(-153, 141)
+texture = ExtResource("1_a37h8")
+metadata/_edit_lock_ = true
+
+[node name="Trees1" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(242, 122)
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(2048, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Trees1"]
+self_modulate = Color(0.0392157, 0.0392157, 0.0901961, 1)
+position = Vector2(871, 141)
+texture = ExtResource("2_s516e")
+metadata/_edit_lock_ = true
+
+[node name="Trees2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(242, 122)
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(2048, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Trees2"]
+self_modulate = Color(0.0392157, 0.0392157, 0.0901961, 1)
+position = Vector2(1895, 141)
+texture = ExtResource("2_s516e")
+metadata/_edit_lock_ = true
+
+[node name="Trees3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(242, 122)
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(2048, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Trees3"]
+self_modulate = Color(0.0392157, 0.0392157, 0.0901961, 1)
+position = Vector2(-153, 141)
+texture = ExtResource("2_s516e")
+metadata/_edit_lock_ = true
+
+[node name="Trees4" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(242, 122)
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(2048, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Trees4"]
+self_modulate = Color(0.0509804, 0.0509804, 0.0901961, 1)
+position = Vector2(871, 141)
+texture = ExtResource("2_s516e")
+metadata/_edit_lock_ = true
+
+[node name="Trees5" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(242, 122)
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(2048, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Trees5"]
+self_modulate = Color(0.0509804, 0.0509804, 0.0901961, 1)
+position = Vector2(1895, 141)
+texture = ExtResource("2_s516e")
+metadata/_edit_lock_ = true
+
+[node name="Trees6" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(242, 122)
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(2048, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Trees6"]
+self_modulate = Color(0.0509804, 0.0509804, 0.0901961, 1)
+position = Vector2(-153, 141)
+texture = ExtResource("2_s516e")
+metadata/_edit_lock_ = true

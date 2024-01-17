@@ -1,0 +1,94 @@
+[gd_scene load_steps=9 format=3 uid="uid://byldvbv2cs0eq"]
+
+[ext_resource type="Script" path="res://Levels/Scripts/CreditsMenu.cs" id="1_nbvmw"]
+[ext_resource type="PackedScene" uid="uid://ys0p5xf0gbum" path="res://Levels/Menus/Parallax.tscn" id="1_w0ghj"]
+[ext_resource type="Script" path="res://Levels/Scripts/BackgroundMovement.cs" id="2_spreh"]
+[ext_resource type="Texture2D" uid="uid://75qcadlkvnr" path="res://Assets/Tiles/GraveTrap.png" id="3_bn2g0"]
+[ext_resource type="Texture2D" uid="uid://455vk0fvbn3d" path="res://Assets/Tiles/BackGrave.png" id="4_xlg5k"]
+[ext_resource type="Script" path="res://Levels/Scripts/Button.cs" id="5_lv3ec"]
+[ext_resource type="Texture2D" uid="uid://cmwlc7gxseulr" path="res://Assets/Credits/Credits1.png" id="7_x2210"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jle0h"]
+
+[node name="CreditsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nbvmw")
+
+[node name="Parallax" parent="." instance=ExtResource("1_w0ghj")]
+
+[node name="BackgroundMovement" type="CharacterBody2D" parent="."]
+script = ExtResource("2_spreh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundMovement"]
+position = Vector2(1, 357)
+shape = SubResource("CircleShape2D_jle0h")
+
+[node name="Camera2D" type="Camera2D" parent="BackgroundMovement"]
+zoom = Vector2(1.2, 1.2)
+limit_top = -489
+limit_bottom = 456
+editor_draw_limits = true
+
+[node name="Background" type="Control" parent="BackgroundMovement"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+
+[node name="GraveTrap" type="Sprite2D" parent="BackgroundMovement/Background"]
+position = Vector2(0, -194)
+scale = Vector2(3, 3)
+texture = ExtResource("3_bn2g0")
+
+[node name="Panel" type="Panel" parent="BackgroundMovement"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundMovement/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -69.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("7_x2210")
+
+[node name="BackButton" type="Button" parent="BackgroundMovement"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 150.0
+offset_right = 150.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("4_xlg5k")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("5_lv3ec")
+
+[connection signal="pressed" from="BackgroundMovement/BackButton" to="." method="_on_back_button_pressed"]

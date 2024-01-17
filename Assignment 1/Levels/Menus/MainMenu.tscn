@@ -1,0 +1,95 @@
+[gd_scene load_steps=10 format=3 uid="uid://mkq224bt2hnt"]
+
+[ext_resource type="Script" path="res://Levels/Scripts/MainMenu.cs" id="1_w4uj5"]
+[ext_resource type="Script" path="res://Levels/Scripts/Button.cs" id="2_hw5i3"]
+[ext_resource type="Texture2D" uid="uid://75qcadlkvnr" path="res://Assets/Tiles/GraveTrap.png" id="2_q6x8i"]
+[ext_resource type="PackedScene" uid="uid://ys0p5xf0gbum" path="res://Levels/Menus/Parallax.tscn" id="3_hf2u7"]
+[ext_resource type="Script" path="res://Levels/Scripts/BackgroundMovement.cs" id="4_41orb"]
+[ext_resource type="Texture2D" uid="uid://da8es601c5y8a" path="res://Assets/Tiles/StartGrave.png" id="5_bijte"]
+[ext_resource type="Texture2D" uid="uid://br0be2kjhh2j4" path="res://Assets/Tiles/CreditsGrave.png" id="7_oj3qt"]
+[ext_resource type="Texture2D" uid="uid://bdjpjoyii3xft" path="res://Assets/Tiles/QuitGrave.png" id="8_17brv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_45lb5"]
+
+[node name="Menu" type="Control" node_paths=PackedStringArray("StartButton")]
+layout_direction = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w4uj5")
+StartButton = NodePath("BackgroundMovement/VBoxContainer/StartButton")
+
+[node name="Parallax" parent="." instance=ExtResource("3_hf2u7")]
+position = Vector2(576, 0)
+
+[node name="BackgroundMovement" type="CharacterBody2D" parent="."]
+position = Vector2(576, 0)
+script = ExtResource("4_41orb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundMovement"]
+position = Vector2(1, 357)
+shape = SubResource("CircleShape2D_45lb5")
+
+[node name="Camera2D" type="Camera2D" parent="BackgroundMovement"]
+zoom = Vector2(1.2, 1.2)
+limit_top = -489
+limit_bottom = 456
+editor_draw_limits = true
+
+[node name="Background" type="Control" parent="BackgroundMovement"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+
+[node name="GraveTrap" type="Sprite2D" parent="BackgroundMovement/Background"]
+position = Vector2(0, -194)
+scale = Vector2(5, 5)
+texture = ExtResource("2_q6x8i")
+
+[node name="VBoxContainer" type="HBoxContainer" parent="BackgroundMovement"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -454.0
+offset_top = 35.5
+offset_right = 454.0
+offset_bottom = 268.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="StartButton" type="Button" parent="BackgroundMovement/VBoxContainer"]
+custom_minimum_size = Vector2(300, 75)
+layout_mode = 2
+icon = ExtResource("5_bijte")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_hw5i3")
+
+[node name="CreditsButton" type="Button" parent="BackgroundMovement/VBoxContainer"]
+custom_minimum_size = Vector2(300, 75)
+layout_mode = 2
+icon = ExtResource("7_oj3qt")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="QuitButton" type="Button" parent="BackgroundMovement/VBoxContainer"]
+custom_minimum_size = Vector2(300, 75)
+layout_mode = 2
+icon = ExtResource("8_17brv")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="BackgroundMovement/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="BackgroundMovement/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="BackgroundMovement/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

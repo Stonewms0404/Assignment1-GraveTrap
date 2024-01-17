@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://rsf16ck78p36"]
+
+[ext_resource type="Script" path="res://Levels/Scripts/GameManager.cs" id="1_ct41w"]
+[ext_resource type="PackedScene" uid="uid://caocao7bbotj1" path="res://Characters/Player/Player.tscn" id="2_i1squ"]
+[ext_resource type="PackedScene" uid="uid://cuy0pleivbo1t" path="res://Levels/Level_1.tscn" id="2_khi16"]
+[ext_resource type="PackedScene" uid="uid://de44t4tnnbjlk" path="res://Levels/Menus/PauseMenu.tscn" id="3_q8jks"]
+[ext_resource type="PackedScene" uid="uid://ys0p5xf0gbum" path="res://Levels/Menus/Parallax.tscn" id="5_oaseh"]
+[ext_resource type="PackedScene" uid="uid://b1h3v65buu22r" path="res://Levels/Menus/DeathMenu.tscn" id="5_xlo07"]
+[ext_resource type="Texture2D" uid="uid://btecr23qg6ftx" path="res://Assets/Player/CooldownTexture/UnderCircle.png" id="8_dwknn"]
+[ext_resource type="Script" path="res://Characters/Player/TextureProgressBar.cs" id="9_5itvm"]
+[ext_resource type="PackedScene" uid="uid://dnuu8dll8sw5r" path="res://Obstacles/Spike.tscn" id="9_jxqpr"]
+
+[node name="GameManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_ct41w")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" node_paths=PackedStringArray("gamemanager") instance=ExtResource("3_q8jks")]
+gamemanager = NodePath("../..")
+
+[node name="DeathMenu" parent="CanvasLayer" node_paths=PackedStringArray("player", "gamemanager") instance=ExtResource("5_xlo07")]
+player = NodePath("../../Player")
+gamemanager = NodePath("../..")
+
+[node name="Level1" parent="." instance=ExtResource("2_khi16")]
+
+[node name="Parallax" parent="." instance=ExtResource("5_oaseh")]
+
+[node name="Player" parent="." node_paths=PackedStringArray("gamemanager", "DashCooldown") instance=ExtResource("2_i1squ")]
+position = Vector2(-187, 174)
+gamemanager = NodePath("..")
+DashCooldown = NodePath("TextureProgressBar2")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(2, 0)
+zoom = Vector2(1.5, 1.5)
+limit_left = -241
+limit_top = -250
+limit_bottom = 610
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+drag_horizontal_enabled = true
+drag_left_margin = 0.01
+drag_right_margin = 0.01
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="Player" node_paths=PackedStringArray("player")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = -75.0
+offset_right = 93.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.34, 0.34)
+fill_mode = 4
+texture_under = ExtResource("8_dwknn")
+texture_progress = ExtResource("8_dwknn")
+tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(0, 1, 0.492, 1)
+script = ExtResource("9_5itvm")
+player = NodePath("..")
+
+[node name="DashCooldown" type="Timer" parent="Player/TextureProgressBar2"]
+wait_time = 2.0
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Spikes" parent="." instance=ExtResource("9_jxqpr")]
+position = Vector2(-122, 198)
+
+[connection signal="timeout" from="Player/TextureProgressBar2/DashCooldown" to="Player/TextureProgressBar2" method="_on_dash_cooldown_timeout"]
