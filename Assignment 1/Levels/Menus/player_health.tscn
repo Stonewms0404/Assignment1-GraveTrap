@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://uh66jtedatpj"]
+
+[ext_resource type="Script" path="res://Levels/Scripts/PlayerHealth.cs" id="1_c6vy4"]
+[ext_resource type="PackedScene" uid="uid://bebe2qnw3laow" path="res://Levels/Menus/Heart.tscn" id="2_ra2ku"]
+
+[node name="PlayerHealth" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c6vy4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 236.0
+offset_bottom = 60.0
+
+[node name="Heart1" parent="HBoxContainer" node_paths=PackedStringArray("phealth") instance=ExtResource("2_ra2ku")]
+layout_mode = 2
+phealth = NodePath("../..")
+
+[node name="Heart2" parent="HBoxContainer" node_paths=PackedStringArray("phealth") instance=ExtResource("2_ra2ku")]
+layout_mode = 2
+phealth = NodePath("../..")
+HeartNum = 1
+
+[node name="Heart3" parent="HBoxContainer" node_paths=PackedStringArray("phealth") instance=ExtResource("2_ra2ku")]
+layout_mode = 2
+phealth = NodePath("../..")
+HeartNum = 2
+
+[node name="Heart4" parent="HBoxContainer" node_paths=PackedStringArray("phealth") instance=ExtResource("2_ra2ku")]
+layout_mode = 2
+phealth = NodePath("../..")
+HeartNum = 3
+
+[node name="Heart5" parent="HBoxContainer" node_paths=PackedStringArray("phealth") instance=ExtResource("2_ra2ku")]
+layout_mode = 2
+phealth = NodePath("../..")
+HeartNum = 4

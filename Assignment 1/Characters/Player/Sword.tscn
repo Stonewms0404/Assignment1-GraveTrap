@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkbvpxnvrlpr8"]
+
+[ext_resource type="Script" path="res://Characters/Player/Sword.cs" id="1_fl7rr"]
+[ext_resource type="Texture2D" uid="uid://iok5h2plpukl" path="res://Assets/Player/Iron Sword.png" id="2_rno25"]
+[ext_resource type="PackedScene" uid="uid://b4rbm0kyxhucb" path="res://Characters/Components/attack_component.tscn" id="3_xdxvr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvo1n"]
+size = Vector2(5.65685, 16)
+
+[node name="Sword" type="CharacterBody2D" node_paths=PackedStringArray("coll", "Attack")]
+collision_mask = 6
+script = ExtResource("1_fl7rr")
+coll = NodePath("CollisionShape2D")
+Attack = NodePath("AttackComponent")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rno25")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.25, 0.25)
+rotation = 0.785398
+shape = SubResource("RectangleShape2D_tvo1n")
+
+[node name="AttackComponent" parent="." instance=ExtResource("3_xdxvr")]

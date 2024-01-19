@@ -6,22 +6,24 @@ public partial class Player : CharacterBody2D
 	//Normal Movement varibles.
 	public float Speed = 15.0f;
 	public float MaxSpeed = 300.0f;
-	public int facing = 0;
+	public int facing = 1;
 	public const float JumpVelocity = -600.0f;
 	public float movement = 0.0f;
 	public bool CanDash = true;
+	public bool isSwinging = false;
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
 	//Animation Variable.
 	protected AnimationPlayer anim;
 
-	public Timer PlayerHitCooldown;
-	public AnimationPlayer hitAnim;
-
 	[Signal]
 	public delegate void ToggleDeathMenuEventHandler(String DeathMsg);
 	[Signal]
+	public delegate void ToggleWinMenuEventHandler();
+	[Signal]
 	public delegate void StartDashCooldownEventHandler();
+	[Signal]
+	public delegate void HitEventHandler(int amount);
 	
 	[Export]
 	public GameManager gamemanager;
@@ -30,21 +32,17 @@ public partial class Player : CharacterBody2D
 	[Export]
 	public HealthComponent Health;
 	[Export]
-	public AttackComponent Attack;
-
+	public Sword sword;
 	
 	//When the game first loads.
 	public override void _Ready()
 	{
-		Attack.SetAttack(1);
-		Health.SetHealth(3);
-		facing = 1;
+		sword.coll.Disabled = true;
+		Health.SetHealth(5);
 		DashCooldown.CooldownOver += _OnDashCooldownCooldownOver;
 		anim = (AnimationPlayer)GetNode("AnimationPlayer");
-		hitAnim = (AnimationPlayer)GetNode("PlayerHitAnimation");
-		PlayerHitCooldown = (Timer)GetNode("Player/PlayerHitCooldown");
 		anim.Active = true;
-		anim.Play("Idle_Left");
+		anim.Play("Idle_Right");
 	}
 	
 	//Runs Every Frame.
@@ -54,6 +52,7 @@ public partial class Player : CharacterBody2D
 		Vector2 velocity = Velocity;
 		// Gets the input directions and subtracts them.
 		float MoveInput = Input.GetActionStrength("right") - Input.GetActionStrength("left");
+
 		int direction = (int)MoveInput;
 
 		//Creates the move direction by the speed and direction.
@@ -107,20 +106,43 @@ public partial class Player : CharacterBody2D
 		{
 			velocity = Jump(velocity);
 		}
-		
+
+		if(Input.IsActionJustPressed("swing"))
+		{
+			isSwinging = true;
+			if(facing == -1)
+			{
+				anim.Play("Swing_Left");
+			}
+			else if (facing == 1)
+			{
+				anim.Play("Swing_Right");
+			}
+		}
+		if (isSwinging && !anim.IsPlaying())
+		{
+			isSwinging = false;
+
+		}
+		sword.coll.Disabled = !isSwinging;
+	
 		//Set Animation of the player.
-		SetAnimation(anim, velocity, direction);
+		if (!isSwinging)
+		{
+			SetAnimation(velocity, direction);
+		}
 
 		// Calls the function for dashing and checks input within the dashing function.
 		velocity = Dash(velocity);
 		
+		//GD.Print(facing);
 		Velocity = velocity;
 		Velocity.Normalized();
 		MoveAndSlide();
 	}
 
 	//Animation Function.
-	public void SetAnimation(AnimationPlayer anim, Vector2 velocity, int direction)
+	public void SetAnimation(Vector2 velocity, int direction)
 	{
 		if (velocity.Y == 0)
 		{
@@ -166,7 +188,6 @@ public partial class Player : CharacterBody2D
 	//Player Death Function for anything related to the player's death.
 	public void Death(String DeathBy)
 	{
-		GD.Print(DeathBy);
 		EmitSignal("ToggleDeathMenu", DeathBy);
 	}
 
@@ -194,11 +215,17 @@ public partial class Player : CharacterBody2D
 		Health.TookDamage(amount);
 		if (Health.GetHealth() <= 0)
 		{
+			EmitSignal("Hit", Health.GetHealth());
 			Death(DeathBy);
 		}
 		else
 		{
-			PlayerHitCooldown.Start();
+			EmitSignal("Hit", Health.GetHealth());
 		}
+	}
+
+	public void Win()
+	{
+		EmitSignal("ToggleWinMenu");
 	}
 }

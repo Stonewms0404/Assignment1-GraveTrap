@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnuu8dll8sw5r"]
+[gd_scene load_steps=6 format=3 uid="uid://dnuu8dll8sw5r"]
 
 [ext_resource type="Script" path="res://Obstacles/Spike.cs" id="1_hmi42"]
 [ext_resource type="PackedScene" uid="uid://b4rbm0kyxhucb" path="res://Characters/Components/attack_component.tscn" id="2_2i104"]
-[ext_resource type="PackedScene" uid="uid://ddbpaitn54cbp" path="res://Characters/Components/health_component.tscn" id="3_nkrgn"]
 [ext_resource type="Texture2D" uid="uid://cbciyo0pl0wrc" path="res://Assets/Obstacles/spikes.png" id="4_aoiq0"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xq3o7"]
@@ -13,10 +12,9 @@ b = Vector2(21, 10)
 a = Vector2(12, -6)
 b = Vector2(5, 10)
 
-[node name="Spikes" type="StaticBody2D" node_paths=PackedStringArray("Attack", "Health")]
+[node name="Spikes" type="StaticBody2D" node_paths=PackedStringArray("Attack")]
 script = ExtResource("1_hmi42")
 Attack = NodePath("AttackComponent")
-Health = NodePath("HealthComponent")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
@@ -29,8 +27,6 @@ position = Vector2(-13, -2)
 shape = SubResource("SegmentShape2D_pho1c")
 
 [node name="AttackComponent" parent="." instance=ExtResource("2_2i104")]
-
-[node name="HealthComponent" parent="." instance=ExtResource("3_nkrgn")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("4_aoiq0")
