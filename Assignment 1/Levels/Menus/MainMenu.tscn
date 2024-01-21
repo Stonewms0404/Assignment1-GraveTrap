@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://mkq224bt2hnt"]
+[gd_scene load_steps=12 format=3 uid="uid://mkq224bt2hnt"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/MainMenu.cs" id="1_w4uj5"]
 [ext_resource type="Script" path="res://Levels/Scripts/Button.cs" id="2_hw5i3"]
@@ -8,10 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://da8es601c5y8a" path="res://Assets/Tiles/StartGrave.png" id="5_bijte"]
 [ext_resource type="Texture2D" uid="uid://br0be2kjhh2j4" path="res://Assets/Tiles/CreditsGrave.png" id="7_oj3qt"]
 [ext_resource type="Texture2D" uid="uid://bdjpjoyii3xft" path="res://Assets/Tiles/QuitGrave.png" id="8_17brv"]
+[ext_resource type="AudioStream" uid="uid://bi0xku44cff2f" path="res://Assets/Audio/ForestWalk-320bit(chosic.com).mp3" id="9_sprhm"]
+[ext_resource type="AudioStream" uid="uid://chkid3b1gsnej" path="res://Assets/Audio/SFX/powerUp.wav" id="10_tn6kk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_45lb5"]
 
-[node name="Menu" type="Control" node_paths=PackedStringArray("StartButton")]
+[node name="Menu" type="Control" node_paths=PackedStringArray("StartButton", "Music", "StartGameSound", "StartTimer")]
 layout_direction = 2
 layout_mode = 3
 anchors_preset = 15
@@ -21,9 +23,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_w4uj5")
 StartButton = NodePath("BackgroundMovement/VBoxContainer/StartButton")
+Music = NodePath("Music")
+StartGameSound = NodePath("StartGameSound")
+StartTimer = NodePath("StartTimer")
 
 [node name="Parallax" parent="." instance=ExtResource("3_hf2u7")]
-position = Vector2(576, 0)
+position = Vector2(576, -90)
 
 [node name="BackgroundMovement" type="CharacterBody2D" parent="."]
 position = Vector2(576, 0)
@@ -34,22 +39,9 @@ position = Vector2(1, 357)
 shape = SubResource("CircleShape2D_45lb5")
 
 [node name="Camera2D" type="Camera2D" parent="BackgroundMovement"]
+offset = Vector2(0, 60)
 zoom = Vector2(1.2, 1.2)
-limit_top = -489
-limit_bottom = 456
 editor_draw_limits = true
-
-[node name="Background" type="Control" parent="BackgroundMovement"]
-layout_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-grow_horizontal = 2
-
-[node name="GraveTrap" type="Sprite2D" parent="BackgroundMovement/Background"]
-position = Vector2(0, -194)
-scale = Vector2(5, 5)
-texture = ExtResource("2_q6x8i")
 
 [node name="VBoxContainer" type="HBoxContainer" parent="BackgroundMovement"]
 anchors_preset = 8
@@ -58,9 +50,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -454.0
-offset_top = 35.5
+offset_top = 207.5
 offset_right = 454.0
-offset_bottom = 268.5
+offset_bottom = 440.5
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -90,6 +82,30 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
+[node name="Background" type="Control" parent="BackgroundMovement"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+
+[node name="GraveTrap" type="Sprite2D" parent="BackgroundMovement/Background"]
+position = Vector2(0, -194)
+scale = Vector2(5, 5)
+texture = ExtResource("2_q6x8i")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_sprhm")
+volume_db = -10.0
+autoplay = true
+
+[node name="StartGameSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_tn6kk")
+volume_db = -10.0
+
+[node name="StartTimer" type="Timer" parent="."]
+
 [connection signal="pressed" from="BackgroundMovement/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="BackgroundMovement/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="BackgroundMovement/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

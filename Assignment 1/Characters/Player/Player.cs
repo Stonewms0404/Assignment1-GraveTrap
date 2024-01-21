@@ -33,6 +33,12 @@ public partial class Player : CharacterBody2D
 	public HealthComponent Health;
 	[Export]
 	public Sword sword;
+	[Export]
+	public PlayerCamera camera;
+	[Export]
+	public AudioStreamPlayer dash;
+	[Export]
+	public AudioStreamPlayer Hurt;
 	
 	//When the game first loads.
 	public override void _Ready()
@@ -107,9 +113,10 @@ public partial class Player : CharacterBody2D
 			velocity = Jump(velocity);
 		}
 
-		if(Input.IsActionJustPressed("swing"))
+		if(Input.IsActionJustPressed("swing") && !isSwinging)
 		{
 			isSwinging = true;
+			sword.audio.Playing = true;
 			if(facing == -1)
 			{
 				anim.Play("Swing_Left");
@@ -122,7 +129,6 @@ public partial class Player : CharacterBody2D
 		if (isSwinging && !anim.IsPlaying())
 		{
 			isSwinging = false;
-
 		}
 		sword.coll.Disabled = !isSwinging;
 	
@@ -188,6 +194,8 @@ public partial class Player : CharacterBody2D
 	//Player Death Function for anything related to the player's death.
 	public void Death(String DeathBy)
 	{
+		gamemanager.PlayerDeath();
+		camera.Death();
 		EmitSignal("ToggleDeathMenu", DeathBy);
 	}
 
@@ -196,6 +204,7 @@ public partial class Player : CharacterBody2D
 	{
 		if (Input.IsActionJustPressed("dash") && CanDash)
 		{
+			dash.Playing = true;
 			CanDash = false;
 			velocity.X = 15000.0f * facing;
 			velocity.Y = 0;
@@ -220,6 +229,8 @@ public partial class Player : CharacterBody2D
 		}
 		else
 		{
+			Hurt.Playing = true;
+			camera.Hit();
 			EmitSignal("Hit", Health.GetHealth());
 		}
 	}

@@ -6,6 +6,8 @@ public partial class Sword : CharacterBody2D
 	[Export]
 	public CollisionShape2D coll;
 	[Export]
+	public AudioStreamPlayer audio;
+	[Export]
 	public AttackComponent Attack;
 
 	public override void _Ready()

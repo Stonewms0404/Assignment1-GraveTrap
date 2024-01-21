@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://5k3iou6vcutc"]
+
+[ext_resource type="Script" path="res://Levels/Scripts/Fading.cs" id="1_1pwb1"]
+
+[sub_resource type="Animation" id="Animation_t7qvc"]
+resource_name = "Fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e6qqc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3vs21"]
+resource_name = "Unfade"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_53mil"]
+_data = {
+"Fade": SubResource("Animation_t7qvc"),
+"RESET": SubResource("Animation_e6qqc"),
+"Unfade": SubResource("Animation_3vs21")
+}
+
+[node name="Fading" type="ColorRect" node_paths=PackedStringArray("FadeAnimation")]
+self_modulate = Color(1, 1, 1, 0)
+layout_direction = 2
+offset_left = -1000.0
+offset_top = -2000.0
+offset_right = 4000.0
+offset_bottom = 3000.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_1pwb1")
+FadeAnimation = NodePath("FadeAnimation")
+
+[node name="FadeAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_53mil")
+}

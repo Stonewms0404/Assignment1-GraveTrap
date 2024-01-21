@@ -34,7 +34,6 @@ public partial class Thorns : StaticBody2D
 		}
 		if (body is Sword sword)
 		{
-			GD.Print(hitpoints);
 			hitpoints -= sword.Attack.GetAttack();
 			Health.SetHealth(hitpoints);
 			CheckHealth();

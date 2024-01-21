@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://byldvbv2cs0eq"]
+[gd_scene load_steps=10 format=3 uid="uid://byldvbv2cs0eq"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/CreditsMenu.cs" id="1_nbvmw"]
 [ext_resource type="PackedScene" uid="uid://ys0p5xf0gbum" path="res://Levels/Menus/Parallax.tscn" id="1_w0ghj"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://455vk0fvbn3d" path="res://Assets/Tiles/BackGrave.png" id="4_xlg5k"]
 [ext_resource type="Script" path="res://Levels/Scripts/Button.cs" id="5_lv3ec"]
 [ext_resource type="Texture2D" uid="uid://cmwlc7gxseulr" path="res://Assets/Credits/Credits1.png" id="7_x2210"]
+[ext_resource type="AudioStream" uid="uid://u15qacoofeu6" path="res://Assets/Audio/Puzzled Mind.wav" id="8_cmuf5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jle0h"]
 
@@ -90,5 +91,10 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("5_lv3ec")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_cmuf5")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="pressed" from="BackgroundMovement/BackButton" to="." method="_on_back_button_pressed"]

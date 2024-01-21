@@ -14,4 +14,10 @@ public partial class BackgroundMovement : CharacterBody2D
 		Velocity = velocity;
 		MoveAndSlide();
 	}
+
+	public void AddFade(PackedScene Fade)
+	{
+		Node fade = Fade.Instantiate();
+		AddChild(fade);
+	}
 }

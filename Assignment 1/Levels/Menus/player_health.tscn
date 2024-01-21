@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bebe2qnw3laow" path="res://Levels/Menus/Heart.tscn" id="2_ra2ku"]
 
 [node name="PlayerHealth" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,6 +21,7 @@ offset_right = 236.0
 offset_bottom = 60.0
 
 [node name="Heart1" parent="HBoxContainer" node_paths=PackedStringArray("phealth") instance=ExtResource("2_ra2ku")]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 phealth = NodePath("../..")
 

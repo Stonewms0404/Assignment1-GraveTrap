@@ -1,16 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkbvpxnvrlpr8"]
+[gd_scene load_steps=6 format=3 uid="uid://dkbvpxnvrlpr8"]
 
 [ext_resource type="Script" path="res://Characters/Player/Sword.cs" id="1_fl7rr"]
 [ext_resource type="Texture2D" uid="uid://iok5h2plpukl" path="res://Assets/Player/Iron Sword.png" id="2_rno25"]
 [ext_resource type="PackedScene" uid="uid://b4rbm0kyxhucb" path="res://Characters/Components/attack_component.tscn" id="3_xdxvr"]
+[ext_resource type="AudioStream" uid="uid://cgl8tb6av48x0" path="res://Assets/Audio/SFX/swing.wav" id="4_hhuwe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvo1n"]
 size = Vector2(5.65685, 16)
 
-[node name="Sword" type="CharacterBody2D" node_paths=PackedStringArray("coll", "Attack")]
+[node name="Sword" type="CharacterBody2D" node_paths=PackedStringArray("coll", "audio", "Attack")]
 collision_mask = 6
 script = ExtResource("1_fl7rr")
 coll = NodePath("CollisionShape2D")
+audio = NodePath("SwingAudio")
 Attack = NodePath("AttackComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -22,3 +24,7 @@ rotation = 0.785398
 shape = SubResource("RectangleShape2D_tvo1n")
 
 [node name="AttackComponent" parent="." instance=ExtResource("3_xdxvr")]
+
+[node name="SwingAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hhuwe")
+volume_db = -18.0

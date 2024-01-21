@@ -6,6 +6,9 @@ public partial class GameManager : Node
 	[Signal]
 	public delegate void ToggleGamePausedEventHandler(bool IsPaused);
 
+	[Export]
+	public AudioStreamPlayer MainMusic;
+
 	public bool GamePaused = false;
 	public bool AbleToPause = false;
 	private int LevelNumber;
@@ -21,18 +24,25 @@ public partial class GameManager : Node
 		LevelNumber = LevelNum;
 	}
 
+	public int GetLevelNumber()
+	{
+		GD.Print(LevelNumber);
+		return LevelNumber;
+	}
+
 	public override void _Input(InputEvent @event)
 	{
 		if (@event.IsActionPressed("pause") && AbleToPause)
 		{
+			MainMusic.StreamPaused = !MainMusic.StreamPaused;
 			SetGamePaused(!GamePaused);
 		}
 	}
 
-	public void _OnPlayerPlayerDeath(String DeathMsg)
+	public void PlayerDeath()
 	{
+		MainMusic.Playing = false;
 		AbleToPause = false;
-		SetGamePaused(true);
 	}
 
 	public void SetGamePaused(bool IsGamePaused)
@@ -45,6 +55,6 @@ public partial class GameManager : Node
 	public void _OnPlayerPlayerWin()
 	{
 		AbleToPause = false;
-		
+		MainMusic.Playing = false;
 	}
 }

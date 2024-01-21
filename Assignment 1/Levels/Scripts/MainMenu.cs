@@ -5,6 +5,12 @@ public partial class MainMenu : Control
 {
 	[Export]
 	public Button StartButton;
+	[Export]
+	public AudioStreamPlayer Music;
+	[Export]
+	public AudioStreamPlayer StartGameSound;
+	[Export]
+	public Timer StartTimer;
 
 	public override void _Ready()
 	{
@@ -12,9 +18,15 @@ public partial class MainMenu : Control
 		StartButton.FocusButton();
 	}
 
+	public void _on_start_timer_timeout()
+	{
+		GetTree().ChangeSceneToFile("res://Levels/game_manager_level_1.tscn");
+	}
+
 	private void _on_start_button_pressed()
 	{
-		GetTree().ChangeSceneToFile("res://Levels/GameManager.tscn");
+		StartGameSound.Playing = true;
+		StartTimer.Start();
 	}
 	
 	private void _on_credits_button_pressed()

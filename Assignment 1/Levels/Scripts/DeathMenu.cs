@@ -11,6 +11,8 @@ public partial class DeathMenu : Control
 	public Player player;
 	[Export]
 	public GameManager gamemanager;
+	[Export]
+	public AudioStreamPlayer Music;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -23,6 +25,7 @@ public partial class DeathMenu : Control
 	// Signal for pausing and unpausing the game.
 	public void _OnPlayerToggleDeathMenu(String DeathMsg)
 	{
+		Music.Playing = true;
 		DeathBy.Text = DeathMsg;
 		gamemanager.AbleToPause = false;
 		GetTree().Paused = true;
@@ -32,7 +35,7 @@ public partial class DeathMenu : Control
 
 	private void _on_try_again_button_pressed()
 	{
-		GetTree().ChangeSceneToFile("res://Levels/GameManager.tscn");
+		GetTree().ChangeSceneToFile("res://Levels/game_manager_level_" + gamemanager.GetLevelNumber() + ".tscn");
 	}
 	
 	private void _on_main_menu_button_pressed()
