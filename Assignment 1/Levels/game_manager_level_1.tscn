@@ -1,10 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://demcu25fnlt57"]
+[gd_scene load_steps=13 format=3 uid="uid://demcu25fnlt57"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/GameManager.cs" id="1_y23b3"]
 [ext_resource type="PackedScene" uid="uid://uh66jtedatpj" path="res://Levels/Menus/player_health.tscn" id="2_py0p4"]
 [ext_resource type="PackedScene" uid="uid://de44t4tnnbjlk" path="res://Levels/Menus/PauseMenu.tscn" id="3_8m75n"]
-[ext_resource type="PackedScene" uid="uid://b1h3v65buu22r" path="res://Levels/Menus/DeathMenu.tscn" id="4_nkjg5"]
-[ext_resource type="PackedScene" uid="uid://b7b36x1y6qen1" path="res://Levels/Menus/WinMenu.tscn" id="5_uxr77"]
 [ext_resource type="PackedScene" uid="uid://cuy0pleivbo1t" path="res://Levels/Level_1.tscn" id="6_7ac5n"]
 [ext_resource type="PackedScene" uid="uid://ys0p5xf0gbum" path="res://Levels/Menus/Parallax.tscn" id="7_hor65"]
 [ext_resource type="PackedScene" uid="uid://dnuu8dll8sw5r" path="res://Obstacles/Spike.tscn" id="8_sgh7y"]
@@ -15,10 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://p2w2fgao5nqy" path="res://Characters/Player/PlayerCamera.tscn" id="13_k0k2x"]
 [ext_resource type="AudioStream" uid="uid://jmswue8bhj0i" path="res://Assets/Audio/peritune-spook4(chosic.com).mp3" id="14_m6000"]
 
-[node name="GameManagerLevel1" type="Node" node_paths=PackedStringArray("MainMusic")]
+[node name="GameManagerLevel1" type="Node" node_paths=PackedStringArray("MainMusic", "player")]
 process_mode = 3
 script = ExtResource("1_y23b3")
 MainMusic = NodePath("MainMusic")
+player = NodePath("Player")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -28,18 +27,9 @@ player = NodePath("../../Player")
 [node name="PauseMenu" parent="CanvasLayer" node_paths=PackedStringArray("gamemanager") instance=ExtResource("3_8m75n")]
 gamemanager = NodePath("../..")
 
-[node name="DeathMenu" parent="CanvasLayer" node_paths=PackedStringArray("player", "gamemanager") instance=ExtResource("4_nkjg5")]
-player = NodePath("../../Player")
-gamemanager = NodePath("../..")
-
-[node name="WinMenu" parent="CanvasLayer" node_paths=PackedStringArray("player", "gamemanager") instance=ExtResource("5_uxr77")]
-player = NodePath("../../Player")
-gamemanager = NodePath("../..")
-
 [node name="Parallax" parent="." instance=ExtResource("7_hor65")]
 
-[node name="Level1" parent="." node_paths=PackedStringArray("manager") instance=ExtResource("6_7ac5n")]
-manager = NodePath("..")
+[node name="Level1" parent="." instance=ExtResource("6_7ac5n")]
 
 [node name="Obstacles" type="Node" parent="."]
 
@@ -473,4 +463,10 @@ stream = ExtResource("14_m6000")
 volume_db = -18.0
 autoplay = true
 
+[connection signal="ToggleGamePaused" from="." to="CanvasLayer/PauseMenu" method="_on_game_manager_level_1_toggle_game_paused"]
+[connection signal="Hit" from="Player" to="CanvasLayer/PlayerHealth" method="_on_player_hit"]
+[connection signal="StartDashCooldown" from="Player" to="Player/TextureProgressBar2" method="_on_player_start_dash_cooldown"]
+[connection signal="ToggleDeathMenu" from="Player" to="." method="_on_player_toggle_death_menu"]
+[connection signal="ToggleWinMenu" from="Player" to="." method="_on_player_toggle_win_menu"]
+[connection signal="CooldownOver" from="Player/TextureProgressBar2" to="Player" method="_on_texture_progress_bar_2_cooldown_over"]
 [connection signal="timeout" from="Player/TextureProgressBar2/DashCooldown" to="Player/TextureProgressBar2" method="_on_dash_cooldown_timeout"]

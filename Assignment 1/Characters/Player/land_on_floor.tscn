@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://droviefetly7t"]
+
+[sub_resource type="Curve" id="Curve_f004g"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0.00757576, 360), 0.0, 0.0, 0, 0, Vector2(0.590909, 103.086), 0.0, 0.0, 0, 0, Vector2(1, -360), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_c28px"]
+curve = SubResource("Curve_f004g")
+
+[sub_resource type="Curve" id="Curve_6lxd6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.32197, 0.498516), 0.0, 0.0, 0, 0, Vector2(1, 0.0219437), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_fvyh1"]
+curve = SubResource("Curve_6lxd6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0354s"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(4, 1, 0)
+direction = Vector3(0, -1, 0)
+spread = 52.61
+initial_velocity_max = 56.34
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angular_velocity_curve = SubResource("CurveTexture_c28px")
+gravity = Vector3(0, 980, 0)
+linear_accel_min = -2.7
+linear_accel_max = 59.46
+scale_min = 0.1
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_fvyh1")
+
+[node name="LandOnFloor" type="GPUParticles2D"]
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_0354s")
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 0
+draw_order = 0

@@ -17,13 +17,15 @@ public partial class Player : CharacterBody2D
 	protected AnimationPlayer anim;
 
 	[Signal]
-	public delegate void ToggleDeathMenuEventHandler(String DeathMsg);
+	public delegate void ToggleDeathMenuEventHandler();
 	[Signal]
 	public delegate void ToggleWinMenuEventHandler();
 	[Signal]
 	public delegate void StartDashCooldownEventHandler();
 	[Signal]
 	public delegate void HitEventHandler(int amount);
+	[Signal]
+	public delegate void HitFloorEventHandler();
 	
 	[Export]
 	public GameManager gamemanager;
@@ -39,13 +41,18 @@ public partial class Player : CharacterBody2D
 	public AudioStreamPlayer dash;
 	[Export]
 	public AudioStreamPlayer Hurt;
+	[Export]
+	public GpuParticles2D LandOnFloor;
+	[Export]
+	public GpuParticles2D HitParticles;
+	[Export]
+	public GpuParticles2D DashParticles;
 	
 	//When the game first loads.
 	public override void _Ready()
 	{
 		sword.coll.Disabled = true;
 		Health.SetHealth(5);
-		DashCooldown.CooldownOver += _OnDashCooldownCooldownOver;
 		anim = (AnimationPlayer)GetNode("AnimationPlayer");
 		anim.Active = true;
 		anim.Play("Idle_Right");
@@ -60,6 +67,11 @@ public partial class Player : CharacterBody2D
 		float MoveInput = Input.GetActionStrength("right") - Input.GetActionStrength("left");
 
 		int direction = (int)MoveInput;
+
+		if (IsOnFloor())
+		{
+			LandOnFloor.Emitting = true;
+		}
 
 		//Creates the move direction by the speed and direction.
 		if (MoveInput != 0)
@@ -113,7 +125,7 @@ public partial class Player : CharacterBody2D
 			velocity = Jump(velocity);
 		}
 
-		if(Input.IsActionJustPressed("swing") && !isSwinging)
+		if(Input.IsActionPressed("swing") && !isSwinging)
 		{
 			isSwinging = true;
 			sword.audio.Playing = true;
@@ -192,11 +204,10 @@ public partial class Player : CharacterBody2D
 	}
 	
 	//Player Death Function for anything related to the player's death.
-	public void Death(String DeathBy)
+	public void Death()
 	{
-		gamemanager.PlayerDeath();
 		camera.Death();
-		EmitSignal("ToggleDeathMenu", DeathBy);
+		EmitSignal("ToggleDeathMenu");
 	}
 
 	//The Player's Dash Function for calculating if the player can dash or not.
@@ -214,7 +225,7 @@ public partial class Player : CharacterBody2D
 	}
 
 	//Once the dash cooldown is over this function is called to set the can dash boolean to true.
-	public void _OnDashCooldownCooldownOver()
+	public void _on_texture_progress_bar_2_cooldown_over()
 	{
 		CanDash = true;
 	}
@@ -225,10 +236,11 @@ public partial class Player : CharacterBody2D
 		if (Health.GetHealth() <= 0)
 		{
 			EmitSignal("Hit", Health.GetHealth());
-			Death(DeathBy);
+			Death();
 		}
 		else
 		{
+			HitParticles.Emitting = true;
 			Hurt.Playing = true;
 			camera.Hit();
 			EmitSignal("Hit", Health.GetHealth());

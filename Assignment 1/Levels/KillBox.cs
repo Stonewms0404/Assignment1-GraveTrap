@@ -7,7 +7,7 @@ public partial class KillBox : Area2D
 	{
 		if (body is Player player)
 		{
-			player.Death("Fell into grave.");
+			player.Death();
 		}
 	}
 }

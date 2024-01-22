@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfxkw7fo6swqq"]
+
+[sub_resource type="Curve" id="Curve_lb3k3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.992424, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hqpao"]
+curve = SubResource("Curve_lb3k3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0wnfx"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_max = 155.41
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+gravity = Vector3(0, 980, 0)
+damping_max = 5.55
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_hqpao")
+color = Color(1, 0.490196, 0.454902, 1)
+
+[node name="HitPlayer" type="GPUParticles2D"]
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_0wnfx")
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 0
+draw_order = 0

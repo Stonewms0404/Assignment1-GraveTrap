@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://caocao7bbotj1"]
+[gd_scene load_steps=32 format=3 uid="uid://caocao7bbotj1"]
 
 [ext_resource type="Script" path="res://Characters/Player/Player.cs" id="1_dh3ng"]
 [ext_resource type="Texture2D" uid="uid://6yxxy6f0x2ys" path="res://Assets/Player/walk/Walk 1.png" id="1_vv6md"]
@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://ddbpaitn54cbp" path="res://Characters/Components/health_component.tscn" id="14_p65x0"]
 [ext_resource type="AudioStream" uid="uid://brpqmbwobrtyu" path="res://Assets/Audio/SFX/jump.wav" id="15_ovlbv"]
 [ext_resource type="AudioStream" uid="uid://b2teygdf5qif5" path="res://Assets/Audio/SFX/hitHurt.wav" id="17_6tgce"]
+[ext_resource type="PackedScene" uid="uid://droviefetly7t" path="res://Characters/Player/land_on_floor.tscn" id="17_ocss3"]
+[ext_resource type="PackedScene" uid="uid://bfxkw7fo6swqq" path="res://Characters/Player/hit_player.tscn" id="18_r6r1d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o2njb"]
 size = Vector2(8, 16)
@@ -1666,7 +1668,7 @@ _data = {
 "Walk_Right": SubResource("Animation_jmhkr")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("Health", "sword", "dash", "Hurt")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("Health", "sword", "dash", "Hurt", "LandOnFloor", "HitParticles")]
 process_mode = 1
 z_index = 5
 collision_mask = 6
@@ -1675,6 +1677,8 @@ Health = NodePath("HealthComponent")
 sword = NodePath("Sword")
 dash = NodePath("Dash")
 Hurt = NodePath("Hurt")
+LandOnFloor = NodePath("LandOnFloor")
+HitParticles = NodePath("HitPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
@@ -1703,3 +1707,8 @@ stream = ExtResource("15_ovlbv")
 
 [node name="Hurt" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_6tgce")
+
+[node name="LandOnFloor" parent="." instance=ExtResource("17_ocss3")]
+position = Vector2(0, 7)
+
+[node name="HitPlayer" parent="." instance=ExtResource("18_r6r1d")]

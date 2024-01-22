@@ -1,7 +1,7 @@
 [gd_scene load_steps=36 format=3 uid="uid://cuy0pleivbo1t"]
 
+[ext_resource type="Script" path="res://Levels/Level.gd" id="1_fjuac"]
 [ext_resource type="Texture2D" uid="uid://bsffrh2lehehi" path="res://Assets/Tiles/Tile Textures.png" id="1_ogp40"]
-[ext_resource type="Script" path="res://Levels/Level.cs" id="1_v3qup"]
 [ext_resource type="Script" path="res://Levels/KillBox.cs" id="3_ida3l"]
 [ext_resource type="Texture2D" uid="uid://c6dhe5ires86b" path="res://Assets/Tiles/MoveSidewaysGrave.png" id="3_jwtia"]
 [ext_resource type="Texture2D" uid="uid://bn4qc5uvua1u0" path="res://Assets/Tiles/JumpGrave.png" id="4_grbm1"]
@@ -461,7 +461,6 @@ texture_region_size = Vector2i(8, 8)
 [sub_resource type="TileSet" id="TileSet_iuek3"]
 tile_size = Vector2i(8, 8)
 physics_layer_0/collision_layer = 4
-physics_layer_0/collision_mask = 0
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Ground"
 terrain_set_0/terrain_0/color = Color(0.5, 0.4375, 0.25, 1)
@@ -1373,8 +1372,7 @@ _data = {
 
 [node name="Level1" type="Node2D"]
 process_mode = 3
-script = ExtResource("1_v3qup")
-LevelNum = 1
+script = ExtResource("1_fjuac")
 
 [node name="Ground" type="TileMap" parent="."]
 process_mode = 1

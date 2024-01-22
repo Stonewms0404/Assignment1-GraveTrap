@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dqptqij7bqrwy"]
 
-[ext_resource type="Script" path="res://Levels/Level.cs" id="1_sxx5o"]
+[ext_resource type="Script" path="res://Levels/Level.gd" id="1_sxx5o"]
 [ext_resource type="Texture2D" uid="uid://bsffrh2lehehi" path="res://Assets/Tiles/Tile Textures.png" id="2_bx8pp"]
 [ext_resource type="Script" path="res://Levels/KillBox.cs" id="3_d3qu4"]
 [ext_resource type="Script" path="res://Levels/FinishBox.cs" id="4_6iwjn"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cckp8801goic4"]
+[gd_scene load_steps=7 format=3 uid="uid://cckp8801goic4"]
 
 [ext_resource type="Script" path="res://Obstacles/Thorns.cs" id="1_xj612"]
 [ext_resource type="PackedScene" uid="uid://b4rbm0kyxhucb" path="res://Characters/Components/attack_component.tscn" id="3_gjwom"]
+[ext_resource type="PackedScene" uid="uid://bpuhd0b0hwrf7" path="res://Obstacles/hit_thorn.tscn" id="4_3bc6j"]
 [ext_resource type="PackedScene" uid="uid://ddbpaitn54cbp" path="res://Characters/Components/health_component.tscn" id="4_8wewg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d60ib"]
@@ -10,12 +11,14 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h1528"]
 size = Vector2(18, 18)
 
-[node name="Thorns" type="StaticBody2D" node_paths=PackedStringArray("Attack", "Health")]
+[node name="Thorns" type="StaticBody2D" node_paths=PackedStringArray("Attack", "Health", "Hit", "Destroyed")]
 collision_layer = 2
 collision_mask = 17
 script = ExtResource("1_xj612")
 Attack = NodePath("AttackComponent")
 Health = NodePath("HitpointComponent")
+Hit = NodePath("HitThorn")
+Destroyed = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 8)
@@ -24,6 +27,8 @@ shape = SubResource("RectangleShape2D_d60ib")
 [node name="AttackComponent" parent="." instance=ExtResource("3_gjwom")]
 
 [node name="HitpointComponent" parent="." instance=ExtResource("4_8wewg")]
+
+[node name="HitThorn" parent="." instance=ExtResource("4_3bc6j")]
 
 [node name="Hitbox" type="Area2D" parent="."]
 

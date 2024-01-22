@@ -8,26 +8,16 @@ public partial class GameManager : Node
 
 	[Export]
 	public AudioStreamPlayer MainMusic;
+	[Export]
+	public Player player;
 
 	public bool GamePaused = false;
 	public bool AbleToPause = false;
-	private int LevelNumber;
 
 	public override void _Ready()
 	{
 		SetGamePaused(false);
 		AbleToPause = true;
-	}
-
-	public void SetLevelNumber(int LevelNum)
-	{
-		LevelNumber = LevelNum;
-	}
-
-	public int GetLevelNumber()
-	{
-		GD.Print(LevelNumber);
-		return LevelNumber;
 	}
 
 	public override void _Input(InputEvent @event)
@@ -39,14 +29,23 @@ public partial class GameManager : Node
 		}
 	}
 
-	public void PlayerDeath()
+	public void _on_player_toggle_death_menu()
 	{
 		MainMusic.Playing = false;
 		AbleToPause = false;
+		GetTree().ChangeSceneToFile("res://Levels/Menus/DeathMenu.tscn");
+	}
+
+	public void _on_player_toggle_win_menu()
+	{
+		MainMusic.Playing = false;
+		AbleToPause = false;
+		GetTree().ChangeSceneToFile("res://Levels/Menus/WinMenu.tscn");
 	}
 
 	public void SetGamePaused(bool IsGamePaused)
 	{
+		MainMusic.StreamPaused = IsGamePaused;
 		GamePaused = IsGamePaused;
 		GetTree().Paused = GamePaused;
 		EmitSignal("ToggleGamePaused", GamePaused);

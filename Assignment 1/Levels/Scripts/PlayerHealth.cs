@@ -8,13 +8,7 @@ public partial class PlayerHealth : Control
 	[Signal]
 	public delegate void ChangeHealthEventHandler(int value);
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		player.Hit += _OnPlayerHit;
-	}
-
-	public void _OnPlayerHit(int health)
+	public void _on_player_hit(int health)
 	{
 		EmitSignal("ChangeHealth", health);
 	}

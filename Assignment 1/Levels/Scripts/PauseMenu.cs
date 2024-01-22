@@ -11,8 +11,8 @@ public partial class PauseMenu : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		Hide();
 		gamemanager.ToggleGamePaused += _OnGameManagerToggleGamePaused;
+		Hide();
 	}
 
 	// Signal for pausing and unpausing the game.

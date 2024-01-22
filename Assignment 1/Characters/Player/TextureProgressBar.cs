@@ -16,7 +16,6 @@ public partial class TextureProgressBar : Godot.TextureProgressBar
 	{
 		Hide();
 		Cooldown = (Timer)GetNode("DashCooldown");
-		player.StartDashCooldown += _OnPlayerStartDashCooldown;
 	}
 
 	public override async void _PhysicsProcess(double delta)
@@ -33,7 +32,7 @@ public partial class TextureProgressBar : Godot.TextureProgressBar
 		EmitSignal("CooldownOver");
 	}
 
-	public void _OnPlayerStartDashCooldown()
+	public void _on_player_start_dash_cooldown()
 	{
 		Show();
 		Cooldown.Start();

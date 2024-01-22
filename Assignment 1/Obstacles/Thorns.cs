@@ -7,6 +7,10 @@ public partial class Thorns : StaticBody2D
 	public AttackComponent Attack;
 	[Export]
 	public HealthComponent Health;
+	[Export]
+	public GpuParticles2D Hit;
+	[Export]
+	public GpuParticles2D Destroyed;
 	
 	private String DeathBy = "Death by Thorn.";
 	public Sprite2D sprite;
@@ -34,6 +38,7 @@ public partial class Thorns : StaticBody2D
 		}
 		if (body is Sword sword)
 		{
+			Hit.Emitting = true;
 			hitpoints -= sword.Attack.GetAttack();
 			Health.SetHealth(hitpoints);
 			CheckHealth();
@@ -42,7 +47,7 @@ public partial class Thorns : StaticBody2D
 
 	private void CheckHealth()
 	{
-		if (Health.GetHealth() >= 2)
+		if (Health.GetHealth() == 2)
 		{
 			sprite.Texture = FullThorn;
 		}
@@ -52,6 +57,7 @@ public partial class Thorns : StaticBody2D
 		}
 		else
 		{
+			Destroyed.Emitting = true;
 			QueueFree();
 		}
 	}
