@@ -14,8 +14,8 @@ config/name="Grave Trap"
 config/version="1.0"
 run/main_scene="res://Levels/Menus/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
-boot_splash/bg_color=Color(0.266667, 0.266667, 0.266667, 1)
-boot_splash/image="res://Assets/Player/Wall Slide.png"
+boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
+boot_splash/image="res://Assets/Tiles/GraveTrap.png"
 config/icon="res://Assets/Tiles/Grave.png"
 boot_splash/minimum_display_time=5
 

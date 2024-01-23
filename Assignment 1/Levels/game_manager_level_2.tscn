@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://c143h36lyocsv"]
+[gd_scene load_steps=14 format=3 uid="uid://c143h36lyocsv"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/GameManager.cs" id="1_m65oe"]
 [ext_resource type="PackedScene" uid="uid://uh66jtedatpj" path="res://Levels/Menus/player_health.tscn" id="2_acxro"]
+[ext_resource type="PackedScene" uid="uid://vaa7y3ctf54h" path="res://Levels/ParticleManager.tscn" id="2_p4d4v"]
 [ext_resource type="PackedScene" uid="uid://de44t4tnnbjlk" path="res://Levels/Menus/PauseMenu.tscn" id="3_tqlyf"]
 [ext_resource type="PackedScene" uid="uid://ys0p5xf0gbum" path="res://Levels/Menus/Parallax.tscn" id="6_t6tfu"]
 [ext_resource type="PackedScene" uid="uid://dqptqij7bqrwy" path="res://Levels/Level_2.tscn" id="7_xg860"]
@@ -18,6 +19,9 @@ process_mode = 3
 script = ExtResource("1_m65oe")
 MainMusic = NodePath("MainMusic")
 player = NodePath("Player")
+
+[node name="ParticleManager" parent="." instance=ExtResource("2_p4d4v")]
+unique_name_in_owner = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -204,908 +208,461 @@ Attack = NodePath("../Spikes/AttackComponent")
 
 [node name="Thorns" type="Node" parent="Obstacles"]
 
-[node name="Thorns" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+[node name="Thorns7" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(387, 337)
+
+[node name="Thorns11" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(371, 353)
+
+[node name="Thorns12" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(403, 353)
+
+[node name="Thorns8" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(403, 321)
+
+[node name="Thorns9" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(371, 321)
+
+[node name="Thorns17" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
 position = Vector2(339, 353)
 
-[node name="Thorns23" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(1408, 289)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns27" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(1424, 273)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns28" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(1440, 289)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns30" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(1376, 289)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns31" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(1376, 257)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns33" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(1408, 257)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns32" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(1392, 273)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns74" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(2431, 241)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns75" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(2447, 225)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns76" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(2463, 241)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns77" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(2399, 241)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns78" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(2399, 209)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns81" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(2479, 225)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns82" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(2495, 209)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns83" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(2463, 209)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns79" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(2431, 209)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns80" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(2415, 225)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns84" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(3664, 208)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns85" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(3680, 192)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns86" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(3696, 208)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns87" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(3632, 208)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns88" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(3632, 176)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns89" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(3712, 192)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns91" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(3696, 176)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns92" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(3664, 176)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns93" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(3648, 192)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns90" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(5472, 575)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns94" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(5488, 559)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns95" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(5504, 575)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns96" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(5440, 575)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns97" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(5440, 543)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns98" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(5504, 543)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns104" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(5472, 543)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns105" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(5456, 559)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns106" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(5616, 559)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns107" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(5632, 543)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns108" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(5648, 559)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns109" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(5584, 559)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns110" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(5584, 527)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns111" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(5648, 527)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns112" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(5616, 527)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns113" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(5600, 543)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns114" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(5788, 543)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns115" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(5804, 527)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns116" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(5820, 543)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns117" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(5756, 543)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns118" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(5756, 511)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns119" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(5820, 511)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns120" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(5788, 511)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns121" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(5772, 527)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns122" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6032, 511)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns123" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6048, 495)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns124" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6064, 511)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns125" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6000, 511)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns126" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6000, 479)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns127" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6064, 479)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns128" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6032, 479)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns129" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6016, 495)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns130" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6175, 496)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns131" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6191, 480)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns132" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6207, 496)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns133" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6143, 496)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns134" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6224, 480)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns135" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6207, 464)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns136" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6175, 464)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns137" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6159, 480)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns138" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6333, 430)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns139" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6349, 414)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns140" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6365, 430)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns141" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6301, 430)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns142" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6301, 398)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns143" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6365, 398)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns144" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6333, 398)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns145" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6317, 414)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns146" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6462, 254)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns147" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6478, 238)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns148" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6494, 254)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns149" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6478, 271)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns150" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6445, 271)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns151" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6494, 222)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns152" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6462, 222)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns153" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(6446, 238)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
+[node name="Thorns10" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(339, 321)
+
+[node name="Thorns13" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(323, 337)
+
+[node name="Thorns14" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(355, 337)
+
+[node name="Thorns15" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(355, 305)
+
+[node name="Thorns18" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(387, 305)
+
+[node name="Thorns16" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(323, 305)
+
+[node name="Thorns19" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(291, 337)
+
+[node name="Thorns20" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(275, 353)
+
+[node name="Thorns21" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(307, 353)
+
+[node name="Thorns22" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(307, 321)
+
+[node name="Thorns23" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(275, 321)
+
+[node name="Thorns24" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(243, 353)
+
+[node name="Thorns25" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(243, 321)
+
+[node name="Thorns26" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(227, 337)
+
+[node name="Thorns27" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(259, 337)
+
+[node name="Thorns28" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(259, 305)
+
+[node name="Thorns29" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(291, 305)
+
+[node name="Thorns30" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(227, 305)
+
+[node name="Thorns31" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(516, 560)
+
+[node name="Thorns32" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(500, 576)
+
+[node name="Thorns33" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(532, 576)
+
+[node name="Thorns34" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(532, 544)
+
+[node name="Thorns35" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(500, 544)
+
+[node name="Thorns36" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(468, 576)
+
+[node name="Thorns37" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(468, 544)
+
+[node name="Thorns38" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(452, 560)
+
+[node name="Thorns39" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(484, 560)
+
+[node name="Thorns40" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(484, 528)
+
+[node name="Thorns41" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(516, 528)
+
+[node name="Thorns42" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(452, 528)
+
+[node name="Thorns43" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(420, 560)
+
+[node name="Thorns44" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(404, 576)
+
+[node name="Thorns45" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(436, 576)
+
+[node name="Thorns46" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(436, 544)
+
+[node name="Thorns47" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(404, 544)
+
+[node name="Thorns48" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(372, 576)
+
+[node name="Thorns49" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(372, 544)
+
+[node name="Thorns50" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(356, 560)
+
+[node name="Thorns51" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(388, 560)
+
+[node name="Thorns52" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(388, 528)
+
+[node name="Thorns53" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(420, 528)
+
+[node name="Thorns54" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(356, 528)
+
+[node name="Thorns99" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(6201, 479)
+
+[node name="Thorns100" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(6185, 495)
+
+[node name="Thorns101" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(6217, 495)
+
+[node name="Thorns102" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(6217, 463)
+
+[node name="Thorns103" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(6185, 463)
+
+[node name="Thorns104" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(6153, 495)
+
+[node name="Thorns105" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(6153, 463)
+
+[node name="Thorns106" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(5703, 543)
+
+[node name="Thorns107" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(6169, 479)
+
+[node name="Thorns108" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(6169, 447)
+
+[node name="Thorns109" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(6201, 447)
+
+[node name="Thorns131" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(6494, 224)
+
+[node name="Thorns132" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(6478, 240)
+
+[node name="Thorns133" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(6510, 240)
+
+[node name="Thorns134" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(6510, 208)
+
+[node name="Thorns135" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(6478, 208)
+
+[node name="Thorns136" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(6494, 192)
+
+[node name="Thorns110" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(5703, 511)
+
+[node name="Thorns111" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(5671, 543)
+
+[node name="Thorns112" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(5655, 559)
+
+[node name="Thorns113" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(5687, 559)
+
+[node name="Thorns114" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(5687, 527)
+
+[node name="Thorns115" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(5655, 527)
+
+[node name="Thorns116" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(5623, 559)
+
+[node name="Thorns117" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(5623, 527)
+
+[node name="Thorns118" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(5607, 543)
+
+[node name="Thorns119" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(5639, 543)
+
+[node name="Thorns120" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(5639, 511)
+
+[node name="Thorns121" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(5671, 511)
+
+[node name="Thorns123" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(5967, 512)
+
+[node name="Thorns124" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(5967, 480)
+
+[node name="Thorns125" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(5935, 512)
+
+[node name="Thorns126" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(5919, 528)
+
+[node name="Thorns127" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(5951, 528)
+
+[node name="Thorns128" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(5951, 496)
+
+[node name="Thorns129" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(5919, 496)
+
+[node name="Thorns130" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(5935, 480)
+
+[node name="Thorns122" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(5607, 511)
+
+[node name="Thorns137" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(7450, 480)
+
+[node name="Thorns138" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(7450, 448)
+
+[node name="Thorns139" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(7418, 480)
+
+[node name="Thorns140" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(8335, 512)
+
+[node name="Thorns141" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(7434, 496)
+
+[node name="Thorns142" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(7434, 464)
+
+[node name="Thorns143" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(8335, 480)
+
+[node name="Thorns144" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(8303, 512)
+
+[node name="Thorns145" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(8303, 480)
+
+[node name="Thorns146" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(8287, 496)
+
+[node name="Thorns147" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(8319, 496)
+
+[node name="Thorns148" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(8319, 464)
+
+[node name="Thorns149" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(7418, 448)
+
+[node name="Thorns150" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(8287, 464)
+
+[node name="Thorns151" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(8897, 174)
+
+[node name="Thorns152" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(8792, 227)
+
+[node name="Thorns153" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(8656, 232)
 
 [node name="Thorns154" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(7472, 478)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns155" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(7488, 462)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
+position = Vector2(7114, 419)
+Attack = NodePath("../Thorns153/AttackComponent")
+Health = NodePath("../Thorns153/HitpointComponent")
 
 [node name="Thorns156" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(7504, 478)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns157" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(7488, 495)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns158" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(7455, 495)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns161" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(7456, 462)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns159" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(7869, 478)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns160" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(7885, 462)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns162" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(7901, 478)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns163" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(7885, 495)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns164" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(7852, 495)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns165" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(7853, 462)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns166" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(8323, 494)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns167" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(8339, 478)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns168" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(8355, 494)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns169" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(8339, 511)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns170" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(8306, 511)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns171" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(8307, 478)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns172" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(8774, 541)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns173" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(8790, 525)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns174" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(8806, 541)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns178" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(8697, 239)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns179" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(8884, 180)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns180" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(8602, 220)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns181" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(8800, 225)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns175" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(8790, 558)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns176" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(8757, 558)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns177" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(8758, 525)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns99" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(4087, 176)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns100" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(4055, 176)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns101" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(4055, 144)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns102" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(4087, 144)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns103" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(4071, 160)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns2" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(355, 337)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns3" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(323, 337)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns4" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(339, 321)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns5" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(355, 305)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns6" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(323, 305)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns7" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(387, 337)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns11" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(371, 353)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns12" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(403, 353)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns8" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(403, 321)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns9" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(371, 321)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns10" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(387, 305)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns13" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(243, 353)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns14" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(259, 337)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns15" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(227, 337)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns16" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(243, 321)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns17" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(259, 305)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns18" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(227, 305)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns19" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(291, 337)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns25" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(307, 353)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns26" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(275, 353)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns20" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(307, 321)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns21" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(275, 321)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns22" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(291, 305)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns24" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(351, 577)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns29" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(367, 561)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns34" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(335, 561)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns35" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(351, 545)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns36" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(367, 529)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns37" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(335, 529)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns38" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(399, 561)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns39" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(383, 577)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns40" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(415, 577)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns41" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(415, 545)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns42" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(383, 545)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns43" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(399, 529)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns62" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(767, 465)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns63" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(783, 449)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns64" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(751, 449)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns65" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(767, 433)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns66" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(783, 417)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns67" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(751, 417)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns68" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(815, 449)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns69" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(799, 465)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns70" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(831, 465)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns71" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(831, 433)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns72" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(799, 433)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns73" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(815, 417)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns56" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(31, 433)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns57" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(15, 449)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns58" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(47, 449)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns59" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(47, 417)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns60" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(15, 417)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns61" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(31, 401)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns44" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(255, 577)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns45" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(271, 561)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns46" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(239, 561)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns47" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(255, 545)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns48" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(271, 529)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns49" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(239, 529)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns50" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(303, 561)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns51" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(319, 577)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns52" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(287, 577)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns53" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(319, 545)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns54" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(287, 545)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
-
-[node name="Thorns55" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
-position = Vector2(303, 529)
-Attack = NodePath("../Thorns/AttackComponent")
-Health = NodePath("../Thorns/HitpointComponent")
+position = Vector2(7001, 219)
+Attack = NodePath("../Thorns153/AttackComponent")
+Health = NodePath("../Thorns153/HitpointComponent")
+
+[node name="Thorns155" parent="Obstacles/Thorns" node_paths=PackedStringArray("Attack", "Health") instance=ExtResource("9_imysl")]
+position = Vector2(7051, 320)
+Attack = NodePath("../Thorns153/AttackComponent")
+Health = NodePath("../Thorns153/HitpointComponent")
+
+[node name="Thorns63" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(2110, 255)
+
+[node name="Thorns64" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(2094, 271)
+
+[node name="Thorns65" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(2126, 271)
+
+[node name="Thorns66" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(2126, 239)
+
+[node name="Thorns67" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(2094, 239)
+
+[node name="Thorns68" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(1434, 287)
+
+[node name="Thorns69" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(1434, 255)
+
+[node name="Thorns70" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(1418, 271)
+
+[node name="Thorns71" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(1450, 271)
+
+[node name="Thorns72" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(1450, 239)
+
+[node name="Thorns73" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(2110, 223)
+
+[node name="Thorns87" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(2511, 207)
+
+[node name="Thorns88" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(2495, 223)
+
+[node name="Thorns89" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(2527, 223)
+
+[node name="Thorns90" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(2527, 191)
+
+[node name="Thorns91" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(2495, 191)
+
+[node name="Thorns92" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(2543, 207)
+
+[node name="Thorns93" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(3675, 192)
+
+[node name="Thorns94" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(3659, 208)
+
+[node name="Thorns95" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(3691, 208)
+
+[node name="Thorns96" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(3691, 176)
+
+[node name="Thorns97" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(3659, 176)
+
+[node name="Thorns98" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(3707, 192)
+
+[node name="Thorns74" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(1418, 239)
+
+[node name="Thorns75" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(895, 400)
+
+[node name="Thorns76" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(879, 416)
+
+[node name="Thorns77" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(1402, 287)
+
+[node name="Thorns78" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(1402, 255)
+
+[node name="Thorns79" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(879, 384)
+
+[node name="Thorns80" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(847, 416)
+
+[node name="Thorns81" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(847, 384)
+
+[node name="Thorns82" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(831, 400)
+
+[node name="Thorns83" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(863, 400)
+
+[node name="Thorns84" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(863, 368)
+
+[node name="Thorns85" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(895, 368)
+
+[node name="Thorns86" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(831, 368)
+
+[node name="Thorns55" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(48, 434)
+
+[node name="Thorns56" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(48, 402)
+
+[node name="Thorns57" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(16, 434)
+
+[node name="Thorns58" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(16, 402)
+
+[node name="Thorns59" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(0, 418)
+
+[node name="Thorns60" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(32, 418)
+
+[node name="Thorns61" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(32, 386)
+
+[node name="Thorns62" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
+position = Vector2(0, 386)
 
 [node name="Player" parent="." node_paths=PackedStringArray("gamemanager", "DashCooldown", "camera") instance=ExtResource("8_pxtix")]
 position = Vector2(-169, 175)
@@ -1163,6 +720,157 @@ volume_db = -18.0
 autoplay = true
 
 [connection signal="ToggleGamePaused" from="." to="CanvasLayer/PauseMenu" method="_on_game_manager_level_2_toggle_game_paused"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns7" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns11" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns12" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns8" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns9" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns17" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns10" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns13" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns14" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns15" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns18" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns16" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns19" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns20" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns21" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns22" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns23" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns24" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns25" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns26" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns27" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns28" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns29" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns30" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns31" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns32" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns33" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns34" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns35" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns36" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns37" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns38" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns39" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns40" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns41" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns42" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns43" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns44" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns45" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns46" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns47" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns48" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns49" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns50" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns51" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns52" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns53" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns54" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns99" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns100" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns101" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns102" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns103" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns104" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns105" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns106" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns107" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns108" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns109" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns131" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns132" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns133" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns134" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns135" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns136" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns110" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns111" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns112" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns113" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns114" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns115" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns116" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns117" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns118" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns119" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns120" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns121" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns123" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns124" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns125" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns126" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns127" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns128" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns129" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns130" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns122" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns137" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns138" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns139" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns140" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns141" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns142" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns143" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns144" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns145" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns146" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns147" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns148" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns149" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns150" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns151" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns152" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns153" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns154" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns156" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns155" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns63" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns64" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns65" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns66" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns67" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns68" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns69" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns70" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns71" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns72" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns73" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns87" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns88" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns89" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns90" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns91" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns92" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns93" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns94" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns95" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns96" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns97" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns98" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns74" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns75" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns76" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns77" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns78" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns79" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns80" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns81" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns82" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns83" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns84" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns85" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns86" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns55" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns56" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns57" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns58" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns59" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns60" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns61" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="PlayParticle" from="Obstacles/Thorns/Thorns62" to="ParticleManager" method="_OnThornPlayParticle"]
+[connection signal="Hit" from="Player" to="CanvasLayer/PlayerHealth" method="_on_player_hit"]
 [connection signal="StartDashCooldown" from="Player" to="Player/TextureProgressBar2" method="_on_player_start_dash_cooldown"]
 [connection signal="ToggleDeathMenu" from="Player" to="." method="_on_player_toggle_death_menu"]
 [connection signal="ToggleWinMenu" from="Player" to="." method="_on_player_toggle_win_menu"]

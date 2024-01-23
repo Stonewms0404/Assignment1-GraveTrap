@@ -17,7 +17,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_adsvy")
-MainMenuButton = NodePath("CanvasLayer/Panel/VBoxContainer/MainMenuButton")
+MainMenuButton = NodePath("CanvasLayer/VBoxContainer/MainMenuButton")
 Music = NodePath("Music")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
@@ -41,53 +41,37 @@ editor_draw_limits = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -125.0
+offset_left = -146.0
 offset_top = -125.0
-offset_right = -125.0
-offset_bottom = -125.0
+offset_right = 54.0
+offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.5, 1.5)
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-offset_top = -5.0
-offset_right = 250.0
-offset_bottom = 35.0
 text = "You Failed!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 25.0
-offset_top = 32.5
-offset_right = 225.0
-offset_bottom = 217.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MainMenuButton" type="Button" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="MainMenuButton" type="Button" parent="CanvasLayer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Main Menu"
 script = ExtResource("2_hyg6p")
 
-[node name="QuitButton" type="Button" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="CanvasLayer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Quit"
 
-[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

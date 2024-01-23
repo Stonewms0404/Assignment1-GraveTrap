@@ -45,8 +45,6 @@ public partial class Player : CharacterBody2D
 	public GpuParticles2D LandOnFloor;
 	[Export]
 	public GpuParticles2D HitParticles;
-	[Export]
-	public GpuParticles2D DashParticles;
 	
 	//When the game first loads.
 	public override void _Ready()

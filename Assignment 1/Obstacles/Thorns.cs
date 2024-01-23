@@ -7,16 +7,15 @@ public partial class Thorns : StaticBody2D
 	public AttackComponent Attack;
 	[Export]
 	public HealthComponent Health;
-	[Export]
-	public GpuParticles2D Hit;
-	[Export]
-	public GpuParticles2D Destroyed;
+
+	[Signal]
+	public delegate void PlayParticleEventHandler(Vector2 ThornPosition);
 	
-	private String DeathBy = "Death by Thorn.";
 	public Sprite2D sprite;
 	public Texture2D DamagedThorn;
 	public Texture2D FullThorn;
 	private int hitpoints;
+	private string DeathBy = "";
 
 	public override void _Ready()
 	{
@@ -38,7 +37,7 @@ public partial class Thorns : StaticBody2D
 		}
 		if (body is Sword sword)
 		{
-			Hit.Emitting = true;
+			EmitSignal("PlayParticle", GlobalPosition);
 			hitpoints -= sword.Attack.GetAttack();
 			Health.SetHealth(hitpoints);
 			CheckHealth();
@@ -57,7 +56,6 @@ public partial class Thorns : StaticBody2D
 		}
 		else
 		{
-			Destroyed.Emitting = true;
 			QueueFree();
 		}
 	}
