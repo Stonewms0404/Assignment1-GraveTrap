@@ -11,6 +11,7 @@ public partial class Player : CharacterBody2D
 	public float movement = 0.0f;
 	public bool CanDash = true;
 	public bool isSwinging = false;
+	public bool isGrounded = true;
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
 	//Animation Variable.
@@ -25,7 +26,7 @@ public partial class Player : CharacterBody2D
 	[Signal]
 	public delegate void HitEventHandler(int amount);
 	[Signal]
-	public delegate void HitFloorEventHandler();
+	public delegate void PlayLandParticleEventHandler(Vector2 PlayerPosition);
 	
 	[Export]
 	public GameManager gamemanager;
@@ -41,8 +42,6 @@ public partial class Player : CharacterBody2D
 	public AudioStreamPlayer dash;
 	[Export]
 	public AudioStreamPlayer Hurt;
-	[Export]
-	public GpuParticles2D LandOnFloor;
 	[Export]
 	public GpuParticles2D HitParticles;
 	
@@ -66,9 +65,10 @@ public partial class Player : CharacterBody2D
 
 		int direction = (int)MoveInput;
 
-		if (IsOnFloor())
+		if (IsOnFloor() && !isGrounded)
 		{
-			LandOnFloor.Emitting = true;
+			isGrounded = true;
+			EmitSignal("PlayLandParticle", GlobalPosition);
 		}
 
 		//Creates the move direction by the speed and direction.
@@ -114,6 +114,7 @@ public partial class Player : CharacterBody2D
 		// Add the gravity.
 		if (!IsOnFloor())
 		{
+			isGrounded = false;
 			velocity.Y += gravity * (float)delta;
 		}
 

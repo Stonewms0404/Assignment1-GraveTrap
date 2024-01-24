@@ -400,6 +400,7 @@ autoplay = true
 [connection signal="PlayParticle" from="Obstacles/Thorns/Thorns44" to="ParticleManager" method="_OnThornPlayParticle"]
 [connection signal="PlayParticle" from="Obstacles/Thorns/Thorns38" to="ParticleManager" method="_OnThornPlayParticle"]
 [connection signal="Hit" from="Player" to="CanvasLayer/PlayerHealth" method="_on_player_hit"]
+[connection signal="PlayLandParticle" from="Player" to="ParticleManager" method="_OnPlayerPlayLandParticle"]
 [connection signal="StartDashCooldown" from="Player" to="Player/TextureProgressBar2" method="_on_player_start_dash_cooldown"]
 [connection signal="ToggleDeathMenu" from="Player" to="." method="_on_player_toggle_death_menu"]
 [connection signal="ToggleWinMenu" from="Player" to="." method="_on_player_toggle_win_menu"]

@@ -1,6 +1,5 @@
-[gd_scene load_steps=36 format=3 uid="uid://cuy0pleivbo1t"]
+[gd_scene load_steps=43 format=3 uid="uid://cuy0pleivbo1t"]
 
-[ext_resource type="Script" path="res://Levels/Level.gd" id="1_fjuac"]
 [ext_resource type="Texture2D" uid="uid://bsffrh2lehehi" path="res://Assets/Tiles/Tile Textures.png" id="1_ogp40"]
 [ext_resource type="Script" path="res://Levels/KillBox.cs" id="3_ida3l"]
 [ext_resource type="Texture2D" uid="uid://c6dhe5ires86b" path="res://Assets/Tiles/MoveSidewaysGrave.png" id="3_jwtia"]
@@ -15,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://3mwcxoejgne5" path="res://Assets/Tiles/GraveWarningBubble.png" id="14_whaf0"]
 [ext_resource type="Texture2D" uid="uid://boafuikx1dmfn" path="res://Assets/Tiles/ThornsBubble.png" id="15_aqvcd"]
 [ext_resource type="Texture2D" uid="uid://ce7p0dfo0t8mj" path="res://Assets/Tiles/SwingGrave.png" id="15_bbtmb"]
+[ext_resource type="Texture2D" uid="uid://bpcwd7mqfwktq" path="res://Assets/Tiles/ArrowSign.png" id="16_kof2r"]
+[ext_resource type="Texture2D" uid="uid://6oj0pbk1fkyi" path="res://Assets/Tiles/FinishGoalBubble.png" id="16_osygn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_14k5u"]
 texture = ExtResource("1_ogp40")
@@ -1184,6 +1185,43 @@ _data = {
 "RESET": SubResource("Animation_y4a1h")
 }
 
+[sub_resource type="Animation" id="Animation_i0s4l"]
+resource_name = "Bounce"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2554, 131), Vector2(2554, 127), Vector2(2554, 119.167), Vector2(2554, 121.333), Vector2(2554, 126), Vector2(2554, 131)]
+}
+
+[sub_resource type="Animation" id="Animation_w2658"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2554, 131)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p427a"]
+_data = {
+"Bounce": SubResource("Animation_i0s4l"),
+"RESET": SubResource("Animation_w2658")
+}
+
 [sub_resource type="Animation" id="Animation_gkqsq"]
 resource_name = "Bounce"
 loop_mode = 2
@@ -1370,9 +1408,69 @@ _data = {
 "RESET": SubResource("Animation_3xqxd")
 }
 
+[sub_resource type="Animation" id="Animation_d5cx8"]
+resource_name = "Float"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2459, 151), Vector2(2459, 148), Vector2(2459, 143.75), Vector2(2459, 151.167), Vector2(2459, 154.083), Vector2(2459, 151)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.6, 0.6)]
+}
+
+[sub_resource type="Animation" id="Animation_q1pgb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2459, 151)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.6, 0.6)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qoahg"]
+_data = {
+"Float": SubResource("Animation_d5cx8"),
+"RESET": SubResource("Animation_q1pgb")
+}
+
 [node name="Level1" type="Node2D"]
 process_mode = 3
-script = ExtResource("1_fjuac")
 
 [node name="Ground" type="TileMap" parent="."]
 process_mode = 1
@@ -1482,6 +1580,23 @@ libraries = {
 }
 autoplay = "DashInstructions"
 
+[node name="DashBubble2" type="Sprite2D" parent="Instruction Graves"]
+position = Vector2(2554, 131)
+scale = Vector2(1.5, 1.84375)
+texture = ExtResource("9_7snyf")
+
+[node name="Grave6" type="Sprite2D" parent="Instruction Graves/DashBubble2"]
+self_modulate = Color(1, 1, 0.321569, 1)
+position = Vector2(-0.666504, -7.05084)
+scale = Vector2(0.656253, 0.533901)
+texture = ExtResource("6_proeh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Instruction Graves/DashBubble2"]
+libraries = {
+"": SubResource("AnimationLibrary_p427a")
+}
+autoplay = "Bounce"
+
 [node name="SpikesBubble" type="Sprite2D" parent="Instruction Graves"]
 position = Vector2(4419, 443)
 scale = Vector2(0.5, 0.5)
@@ -1549,6 +1664,80 @@ texture = ExtResource("6_proeh")
 [node name="SwingGrave" type="Sprite2D" parent="Instruction Graves"]
 position = Vector2(6194, 497)
 texture = ExtResource("15_bbtmb")
+
+[node name="FinishGoalBubble" type="Sprite2D" parent="Instruction Graves"]
+position = Vector2(2459, 151)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("16_osygn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Instruction Graves/FinishGoalBubble"]
+libraries = {
+"": SubResource("AnimationLibrary_qoahg")
+}
+autoplay = "Float"
+
+[node name="Arrows" type="Node" parent="."]
+
+[node name="ArrowSign" type="Sprite2D" parent="Arrows"]
+self_modulate = Color(1, 1, 1, 0.439216)
+position = Vector2(1499, 183)
+rotation = -0.595157
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("16_kof2r")
+
+[node name="ArrowSign4" type="Sprite2D" parent="Arrows"]
+self_modulate = Color(1, 1, 1, 0.439216)
+position = Vector2(904, 440)
+rotation = -1.19031
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("16_kof2r")
+
+[node name="ArrowSign2" type="Sprite2D" parent="Arrows"]
+self_modulate = Color(1, 1, 1, 0.439216)
+position = Vector2(1643, 135)
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("16_kof2r")
+
+[node name="ArrowSign3" type="Sprite2D" parent="Arrows"]
+self_modulate = Color(1, 1, 1, 0.439216)
+position = Vector2(1808, 162)
+rotation = 0.678933
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("16_kof2r")
+
+[node name="ArrowSign7" type="Sprite2D" parent="Arrows"]
+self_modulate = Color(1, 1, 1, 0.439216)
+position = Vector2(2041.99, 166)
+rotation = -0.595157
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("16_kof2r")
+
+[node name="ArrowSign8" type="Sprite2D" parent="Arrows"]
+self_modulate = Color(1, 1, 1, 0.439216)
+position = Vector2(2185.99, 118)
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("16_kof2r")
+
+[node name="ArrowSign9" type="Sprite2D" parent="Arrows"]
+self_modulate = Color(1, 1, 1, 0.439216)
+position = Vector2(2350.99, 145)
+rotation = 0.678933
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("16_kof2r")
+
+[node name="ArrowSign5" type="Sprite2D" parent="Arrows"]
+self_modulate = Color(1, 1, 1, 0.439216)
+position = Vector2(2141, 456)
+rotation = 3.14159
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("16_kof2r")
+
+[node name="ArrowSign6" type="Sprite2D" parent="Arrows"]
+self_modulate = Color(1, 1, 1, 0.439216)
+position = Vector2(1596, 464)
+rotation = -2.03854
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("16_kof2r")
 
 [connection signal="body_entered" from="KillBox" to="KillBox" method="_on_body_entered"]
 [connection signal="body_entered" from="FinishBox" to="FinishBox" method="_on_body_entered"]

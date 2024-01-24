@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://cgl8tb6av48x0" path="res://Assets/Audio/SFX/swing.wav" id="4_hhuwe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvo1n"]
-size = Vector2(3.53553, 9.19239)
+size = Vector2(3.53553, 15.9099)
 
 [node name="Sword" type="CharacterBody2D" node_paths=PackedStringArray("coll", "audio", "Attack")]
 collision_mask = 6
@@ -19,7 +19,7 @@ Attack = NodePath("AttackComponent")
 texture = ExtResource("2_rno25")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -2)
+position = Vector2(-0.374999, 0.375)
 rotation = 0.785398
 shape = SubResource("RectangleShape2D_tvo1n")
 

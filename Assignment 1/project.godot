@@ -23,10 +23,6 @@ boot_splash/minimum_display_time=5
 
 buses/default_bus_layout=""
 
-[autoload]
-
-Global="*res://Levels/Menus/Global.tscn"
-
 [display]
 
 window/size/mode=2

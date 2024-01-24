@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpuhd0b0hwrf7"]
+[gd_scene load_steps=5 format=3 uid="uid://bpuhd0b0hwrf7"]
+
+[ext_resource type="Script" path="res://Levels/Scripts/Particle.cs" id="1_1o862"]
 
 [sub_resource type="Curve" id="Curve_lb3k3"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.511364, 0.633531), 0.0, 0.0, 0, 0, Vector2(0.992424, 0), 0.0, 0.0, 0, 0]
@@ -31,3 +33,6 @@ explosiveness = 1.0
 randomness = 1.0
 fixed_fps = 0
 draw_order = 0
+script = ExtResource("1_1o862")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

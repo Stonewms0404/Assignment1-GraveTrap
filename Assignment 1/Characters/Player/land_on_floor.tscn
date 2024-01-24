@@ -1,4 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://droviefetly7t"]
+[gd_scene load_steps=7 format=3 uid="uid://droviefetly7t"]
+
+[ext_resource type="Script" path="res://Levels/Scripts/Particle.cs" id="1_b73aa"]
 
 [sub_resource type="Curve" id="Curve_f004g"]
 min_value = -360.0
@@ -43,3 +45,6 @@ explosiveness = 1.0
 randomness = 1.0
 fixed_fps = 0
 draw_order = 0
+script = ExtResource("1_b73aa")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
