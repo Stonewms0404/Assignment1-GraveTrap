@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dnuu8dll8sw5r"]
 
-[ext_resource type="Script" path="res://Obstacles/Spike.cs" id="1_hmi42"]
+[ext_resource type="Script" uid="uid://cjdxr316m42pw" path="res://Obstacles/Spike.cs" id="1_hmi42"]
 [ext_resource type="PackedScene" uid="uid://b4rbm0kyxhucb" path="res://Characters/Components/attack_component.tscn" id="2_2i104"]
 [ext_resource type="Texture2D" uid="uid://cbciyo0pl0wrc" path="res://Assets/Obstacles/spikes.png" id="4_aoiq0"]
 

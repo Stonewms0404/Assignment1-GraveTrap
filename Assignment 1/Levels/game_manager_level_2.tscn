@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://c143h36lyocsv"]
+[gd_scene load_steps=16 format=3 uid="uid://c143h36lyocsv"]
 
-[ext_resource type="Script" path="res://Levels/Scripts/GameManager.cs" id="1_m65oe"]
+[ext_resource type="Script" uid="uid://cicln2v0rh405" path="res://Levels/Scripts/GameManager.cs" id="1_m65oe"]
 [ext_resource type="PackedScene" uid="uid://uh66jtedatpj" path="res://Levels/Menus/player_health.tscn" id="2_acxro"]
 [ext_resource type="PackedScene" uid="uid://vaa7y3ctf54h" path="res://Levels/ParticleManager.tscn" id="2_p4d4v"]
 [ext_resource type="PackedScene" uid="uid://de44t4tnnbjlk" path="res://Levels/Menus/PauseMenu.tscn" id="3_tqlyf"]
@@ -8,9 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://dqptqij7bqrwy" path="res://Levels/Level_2.tscn" id="7_xg860"]
 [ext_resource type="PackedScene" uid="uid://dnuu8dll8sw5r" path="res://Obstacles/Spike.tscn" id="8_o7ee0"]
 [ext_resource type="PackedScene" uid="uid://caocao7bbotj1" path="res://Characters/Player/Player.tscn" id="8_pxtix"]
+[ext_resource type="PackedScene" uid="uid://dkaso5i7qme5u" path="res://Characters/camera_movement.tscn" id="9_1lx2j"]
 [ext_resource type="Texture2D" uid="uid://btecr23qg6ftx" path="res://Assets/Player/CooldownTexture/UnderCircle.png" id="9_11tbe"]
+[ext_resource type="PackedScene" uid="uid://cqvasb420loy5" path="res://Characters/Enemy/Enemy.tscn" id="9_gotul"]
 [ext_resource type="PackedScene" uid="uid://cckp8801goic4" path="res://Obstacles/Thorns.tscn" id="9_imysl"]
-[ext_resource type="Script" path="res://Characters/Player/TextureProgressBar.cs" id="10_exy4b"]
+[ext_resource type="Script" uid="uid://lu5tiv737s8q" path="res://Characters/Player/TextureProgressBar.cs" id="10_exy4b"]
 [ext_resource type="PackedScene" uid="uid://p2w2fgao5nqy" path="res://Characters/Player/PlayerCamera.tscn" id="13_k0iix"]
 [ext_resource type="AudioStream" uid="uid://jmswue8bhj0i" path="res://Assets/Audio/peritune-spook4(chosic.com).mp3" id="14_7agcv"]
 
@@ -19,6 +21,7 @@ process_mode = 3
 script = ExtResource("1_m65oe")
 MainMusic = NodePath("MainMusic")
 player = NodePath("Player")
+LevelNum = 2
 
 [node name="ParticleManager" parent="." instance=ExtResource("2_p4d4v")]
 unique_name_in_owner = true
@@ -664,12 +667,89 @@ position = Vector2(32, 386)
 [node name="Thorns62" parent="Obstacles/Thorns" instance=ExtResource("9_imysl")]
 position = Vector2(0, 386)
 
+[node name="Enemies" type="Node" parent="Obstacles"]
+
+[node name="MoveLocation1" type="Node2D" parent="Obstacles/Enemies"]
+position = Vector2(1526, 512)
+scale = Vector2(4, 4)
+
+[node name="MoveLocation2" type="Node2D" parent="Obstacles/Enemies"]
+position = Vector2(1856, 512)
+scale = Vector2(4, 4)
+
+[node name="Enemy" parent="Obstacles/Enemies" node_paths=PackedStringArray("moveLocation1", "moveLocation2") instance=ExtResource("9_gotul")]
+position = Vector2(1526, 512)
+scale = Vector2(4, 4)
+moveLocation1 = NodePath("../MoveLocation1")
+moveLocation2 = NodePath("../MoveLocation2")
+
+[node name="MoveLocation3" type="Node2D" parent="Obstacles/Enemies"]
+position = Vector2(5639, 145)
+scale = Vector2(4, 4)
+
+[node name="MoveLocation4" type="Node2D" parent="Obstacles/Enemies"]
+position = Vector2(5777, 145)
+scale = Vector2(4, 4)
+
+[node name="Enemy2" parent="Obstacles/Enemies" node_paths=PackedStringArray("moveLocation1", "moveLocation2") instance=ExtResource("9_gotul")]
+position = Vector2(5639, 145)
+scale = Vector2(4, 4)
+moveLocation1 = NodePath("../MoveLocation3")
+moveLocation2 = NodePath("../MoveLocation4")
+
+[node name="MoveLocation5" type="Node2D" parent="Obstacles/Enemies"]
+position = Vector2(7734, 479)
+scale = Vector2(4, 4)
+
+[node name="MoveLocation6" type="Node2D" parent="Obstacles/Enemies"]
+position = Vector2(7954, 479)
+scale = Vector2(4, 4)
+
+[node name="Enemy3" parent="Obstacles/Enemies" node_paths=PackedStringArray("moveLocation1", "moveLocation2") instance=ExtResource("9_gotul")]
+position = Vector2(7734, 479)
+scale = Vector2(4, 4)
+moveLocation1 = NodePath("../MoveLocation5")
+moveLocation2 = NodePath("../MoveLocation6")
+
+[node name="MoveLocation7" type="Node2D" parent="Obstacles/Enemies"]
+position = Vector2(8385, 145)
+scale = Vector2(4, 4)
+
+[node name="MoveLocation8" type="Node2D" parent="Obstacles/Enemies"]
+position = Vector2(8445, 145)
+scale = Vector2(4, 4)
+
+[node name="Enemy4" parent="Obstacles/Enemies" node_paths=PackedStringArray("moveLocation1", "moveLocation2") instance=ExtResource("9_gotul")]
+position = Vector2(8385, 145)
+scale = Vector2(4, 4)
+moveLocation1 = NodePath("../MoveLocation7")
+moveLocation2 = NodePath("../MoveLocation8")
+
+[node name="CameraMovement" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_1lx2j")]
+position = Vector2(1832.2, 475.464)
+player = NodePath("../Player")
+
+[node name="PlayerCamera2" parent="CameraMovement" instance=ExtResource("13_k0iix")]
+scale = Vector2(4, 4)
+zoom = Vector2(1.5, 1.5)
+limit_left = -261
+limit_top = -470
+limit_right = 9885
+limit_bottom = 720
+position_smoothing_speed = 3.0
+drag_horizontal_enabled = true
+drag_left_margin = 0.0
+drag_top_margin = 1.0
+drag_right_margin = 0.0
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
 [node name="Player" parent="." node_paths=PackedStringArray("gamemanager", "DashCooldown", "camera") instance=ExtResource("8_pxtix")]
 position = Vector2(-169, 175)
 scale = Vector2(4, 4)
 gamemanager = NodePath("..")
 DashCooldown = NodePath("TextureProgressBar2")
-camera = NodePath("PlayerCamera")
+camera = NodePath("../CameraMovement/PlayerCamera2")
 
 [node name="TextureProgressBar2" type="TextureProgressBar" parent="Player" node_paths=PackedStringArray("player")]
 anchors_preset = 8
@@ -695,24 +775,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="DashCooldown" type="Timer" parent="Player/TextureProgressBar2"]
 wait_time = 2.0
-
-[node name="PlayerCamera" parent="Player" instance=ExtResource("13_k0iix")]
-process_mode = 3
-scale = Vector2(4, 4)
-ignore_rotation = false
-zoom = Vector2(1.5, 1.5)
-limit_left = -241
-limit_top = -470
-limit_right = 9840
-limit_bottom = 675
-position_smoothing_enabled = true
-position_smoothing_speed = 3.0
-drag_horizontal_enabled = true
-drag_horizontal_offset = 0.3
-drag_top_margin = 1.0
-drag_right_margin = 0.0
-editor_draw_limits = true
-editor_draw_drag_margin = true
 
 [node name="MainMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_7agcv")

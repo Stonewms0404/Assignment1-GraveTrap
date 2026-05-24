@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://5k3iou6vcutc"]
 
-[ext_resource type="Script" path="res://Levels/Scripts/Fading.cs" id="1_1pwb1"]
+[ext_resource type="Script" uid="uid://b8nfxoy8uuai2" path="res://Levels/Scripts/Fading.cs" id="1_1pwb1"]
 
 [sub_resource type="Animation" id="Animation_t7qvc"]
 resource_name = "Fade"
@@ -50,9 +50,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_53mil"]
 _data = {
-"Fade": SubResource("Animation_t7qvc"),
-"RESET": SubResource("Animation_e6qqc"),
-"Unfade": SubResource("Animation_3vs21")
+&"Fade": SubResource("Animation_t7qvc"),
+&"RESET": SubResource("Animation_e6qqc"),
+&"Unfade": SubResource("Animation_3vs21")
 }
 
 [node name="Fading" type="ColorRect" node_paths=PackedStringArray("FadeAnimation")]

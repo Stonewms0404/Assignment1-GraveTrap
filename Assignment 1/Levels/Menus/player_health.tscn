@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://uh66jtedatpj"]
 
-[ext_resource type="Script" path="res://Levels/Scripts/PlayerHealth.cs" id="1_c6vy4"]
+[ext_resource type="Script" uid="uid://cf1ymq4yiqk4i" path="res://Levels/Scripts/PlayerHealth.cs" id="1_c6vy4"]
 [ext_resource type="PackedScene" uid="uid://bebe2qnw3laow" path="res://Levels/Menus/Heart.tscn" id="2_ra2ku"]
 
 [node name="PlayerHealth" type="Control"]

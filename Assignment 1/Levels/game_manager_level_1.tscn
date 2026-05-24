@@ -1,17 +1,19 @@
-[gd_scene load_steps=14 format=3 uid="uid://demcu25fnlt57"]
+[gd_scene load_steps=16 format=3 uid="uid://demcu25fnlt57"]
 
-[ext_resource type="Script" path="res://Levels/Scripts/GameManager.cs" id="1_y23b3"]
+[ext_resource type="Script" uid="uid://cicln2v0rh405" path="res://Levels/Scripts/GameManager.cs" id="1_y23b3"]
 [ext_resource type="PackedScene" uid="uid://vaa7y3ctf54h" path="res://Levels/ParticleManager.tscn" id="2_lecwu"]
 [ext_resource type="PackedScene" uid="uid://uh66jtedatpj" path="res://Levels/Menus/player_health.tscn" id="2_py0p4"]
 [ext_resource type="PackedScene" uid="uid://de44t4tnnbjlk" path="res://Levels/Menus/PauseMenu.tscn" id="3_8m75n"]
 [ext_resource type="PackedScene" uid="uid://cuy0pleivbo1t" path="res://Levels/Level_1.tscn" id="6_7ac5n"]
 [ext_resource type="PackedScene" uid="uid://ys0p5xf0gbum" path="res://Levels/Menus/Parallax.tscn" id="7_hor65"]
 [ext_resource type="PackedScene" uid="uid://dnuu8dll8sw5r" path="res://Obstacles/Spike.tscn" id="8_sgh7y"]
+[ext_resource type="PackedScene" uid="uid://dkaso5i7qme5u" path="res://Characters/camera_movement.tscn" id="9_60bhu"]
 [ext_resource type="PackedScene" uid="uid://cckp8801goic4" path="res://Obstacles/Thorns.tscn" id="9_idnym"]
 [ext_resource type="PackedScene" uid="uid://caocao7bbotj1" path="res://Characters/Player/Player.tscn" id="10_o66j8"]
 [ext_resource type="Texture2D" uid="uid://btecr23qg6ftx" path="res://Assets/Player/CooldownTexture/UnderCircle.png" id="11_kio4k"]
-[ext_resource type="Script" path="res://Characters/Player/TextureProgressBar.cs" id="12_pgvc0"]
+[ext_resource type="Script" uid="uid://lu5tiv737s8q" path="res://Characters/Player/TextureProgressBar.cs" id="12_pgvc0"]
 [ext_resource type="PackedScene" uid="uid://p2w2fgao5nqy" path="res://Characters/Player/PlayerCamera.tscn" id="13_k0k2x"]
+[ext_resource type="PackedScene" uid="uid://cqvasb420loy5" path="res://Characters/Enemy/Enemy.tscn" id="14_06oun"]
 [ext_resource type="AudioStream" uid="uid://jmswue8bhj0i" path="res://Assets/Audio/peritune-spook4(chosic.com).mp3" id="14_m6000"]
 
 [node name="GameManagerLevel1" type="Node" node_paths=PackedStringArray("MainMusic", "player")]
@@ -19,6 +21,7 @@ process_mode = 3
 script = ExtResource("1_y23b3")
 MainMusic = NodePath("MainMusic")
 player = NodePath("Player")
+LevelNum = 1
 
 [node name="ParticleManager" parent="." instance=ExtResource("2_lecwu")]
 unique_name_in_owner = true
@@ -299,12 +302,62 @@ position = Vector2(6399, 401)
 Attack = NodePath("../Thorns/AttackComponent")
 Health = NodePath("../Thorns/HitpointComponent")
 
+[node name="Enemies" type="Node" parent="Obstacles"]
+
+[node name="MoveLocation1" type="Node2D" parent="Obstacles/Enemies"]
+position = Vector2(3917, 496)
+scale = Vector2(4, 4)
+
+[node name="MoveLocation2" type="Node2D" parent="Obstacles/Enemies"]
+position = Vector2(4182.93, 496)
+scale = Vector2(4, 4)
+
+[node name="Enemy" parent="Obstacles/Enemies" node_paths=PackedStringArray("moveLocation1", "moveLocation2") instance=ExtResource("14_06oun")]
+position = Vector2(3917, 496)
+scale = Vector2(4, 4)
+moveLocation1 = NodePath("../MoveLocation1")
+moveLocation2 = NodePath("../MoveLocation2")
+
+[node name="MoveLocation3" type="Node2D" parent="Obstacles/Enemies"]
+position = Vector2(5897, 496)
+scale = Vector2(4, 4)
+
+[node name="MoveLocation4" type="Node2D" parent="Obstacles/Enemies"]
+position = Vector2(6267.25, 496)
+scale = Vector2(4, 4)
+
+[node name="Enemy2" parent="Obstacles/Enemies" node_paths=PackedStringArray("moveLocation1", "moveLocation2") instance=ExtResource("14_06oun")]
+position = Vector2(5897, 496)
+scale = Vector2(4, 4)
+moveLocation1 = NodePath("../MoveLocation3")
+moveLocation2 = NodePath("../MoveLocation4")
+
+[node name="CameraMovement" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_60bhu")]
+position = Vector2(-206, 152)
+player = NodePath("../Player")
+
+[node name="PlayerCamera2" parent="CameraMovement" instance=ExtResource("13_k0k2x")]
+scale = Vector2(4, 4)
+zoom = Vector2(1.5, 1.5)
+limit_left = -241
+limit_top = -470
+limit_right = 7185
+limit_bottom = 610
+position_smoothing_speed = 3.0
+drag_horizontal_enabled = true
+drag_left_margin = 0.0
+drag_top_margin = 0.0
+drag_right_margin = 0.0
+drag_bottom_margin = 0.0
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
 [node name="Player" parent="." node_paths=PackedStringArray("gamemanager", "DashCooldown", "camera") instance=ExtResource("10_o66j8")]
 position = Vector2(-206, 152)
 scale = Vector2(4, 4)
 gamemanager = NodePath("..")
 DashCooldown = NodePath("TextureProgressBar2")
-camera = NodePath("PlayerCamera")
+camera = NodePath("../CameraMovement/PlayerCamera2")
 
 [node name="TextureProgressBar2" type="TextureProgressBar" parent="Player" node_paths=PackedStringArray("player")]
 anchors_preset = 8
@@ -330,22 +383,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="DashCooldown" type="Timer" parent="Player/TextureProgressBar2"]
 wait_time = 2.0
-
-[node name="PlayerCamera" parent="Player" instance=ExtResource("13_k0k2x")]
-scale = Vector2(4, 4)
-zoom = Vector2(1.5, 1.5)
-limit_left = -241
-limit_top = -470
-limit_right = 7185
-limit_bottom = 610
-position_smoothing_enabled = true
-position_smoothing_speed = 3.0
-drag_horizontal_enabled = true
-drag_horizontal_offset = 0.3
-drag_top_margin = 1.0
-drag_right_margin = 0.0
-editor_draw_limits = true
-editor_draw_drag_margin = true
 
 [node name="MainMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_m6000")

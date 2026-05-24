@@ -10,6 +10,8 @@ public partial class GameManager : Node
 	public AudioStreamPlayer MainMusic;
 	[Export]
 	public Player player;
+	[Export]
+	public int LevelNum;
 
 	public bool GamePaused = false;
 	public bool AbleToPause = false;
@@ -18,6 +20,7 @@ public partial class GameManager : Node
 	{
 		SetGamePaused(false);
 		AbleToPause = true;
+		Global.Instance.LevelNum = LevelNum;
 	}
 
 	public override void _Input(InputEvent @event)

@@ -1,34 +1,23 @@
 [gd_scene load_steps=8 format=3 uid="uid://b7b36x1y6qen1"]
 
-[ext_resource type="Script" path="res://Levels/Scripts/WinMenu.cs" id="1_tv3vj"]
-[ext_resource type="Script" path="res://Levels/Scripts/Button.cs" id="2_4rn5c"]
+[ext_resource type="Script" uid="uid://dq7kt864qhl3h" path="res://Levels/Scripts/WinMenu.cs" id="1_tv3vj"]
+[ext_resource type="Script" uid="uid://dyd48yffy8ebu" path="res://Levels/Scripts/Button.cs" id="2_4rn5c"]
 [ext_resource type="Texture2D" uid="uid://buaf53nrtc0il" path="res://Assets/Tiles/YouRested.png" id="2_h7uxa"]
 [ext_resource type="PackedScene" uid="uid://ys0p5xf0gbum" path="res://Levels/Menus/Parallax.tscn" id="3_1m4sx"]
 [ext_resource type="AudioStream" uid="uid://bogxs7ufq21t8" path="res://Assets/Audio/Timeless(chosic.com).mp3" id="3_80wnf"]
-[ext_resource type="Script" path="res://Levels/Scripts/BackgroundMovement.cs" id="4_k0i3a"]
+[ext_resource type="Script" uid="uid://dx0h3052wwms8" path="res://Levels/Scripts/BackgroundMovement.cs" id="4_k0i3a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lh7rk"]
 radius = 17.4928
 
-[node name="WinMenu" type="Control" node_paths=PackedStringArray("MainMenuButton", "NextLevelButton", "Music")]
-process_mode = 3
-clip_contents = true
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -74.0
-offset_right = -4.0
-offset_bottom = -74.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("MainMenuButton", "NextLevelButton", "Music")]
 script = ExtResource("1_tv3vj")
-MainMenuButton = NodePath("BackgroundMovement/Control/VBoxContainer/MainMenuButton")
-NextLevelButton = NodePath("BackgroundMovement/Control/VBoxContainer/NextLevelButton")
+MainMenuButton = NodePath("CanvasLayer/Control/VBoxContainer/MainMenuButton")
+NextLevelButton = NodePath("CanvasLayer/Control/VBoxContainer/NextLevelButton")
 Music = NodePath("Music")
 
 [node name="Parallax" parent="." instance=ExtResource("3_1m4sx")]
+position = Vector2(-4, -74)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_80wnf")
@@ -36,6 +25,7 @@ volume_db = -23.0
 autoplay = true
 
 [node name="BackgroundMovement" type="CharacterBody2D" parent="."]
+position = Vector2(-4, -74)
 script = ExtResource("4_k0i3a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundMovement"]
@@ -47,70 +37,71 @@ position = Vector2(565, 151)
 zoom = Vector2(1.2, 1.2)
 editor_draw_limits = true
 
-[node name="Control" type="Control" parent="BackgroundMovement"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
 z_index = 10
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_direction = 1
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 50.0
-offset_top = -145.0
-offset_right = 50.0
-offset_bottom = -145.0
+offset_left = -164.0
+offset_top = -118.5
+offset_right = 164.0
+offset_bottom = 118.5
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BackgroundMovement/Control"]
-layout_direction = 1
-layout_mode = 1
-offset_left = 393.0
-offset_top = 290.0
-offset_right = 721.0
-offset_bottom = 527.0
 alignment = 1
 
-[node name="MainMenuButton" type="Button" parent="BackgroundMovement/Control/VBoxContainer"]
+[node name="NextLevelButton" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+text = "Next Level"
+
+[node name="MainMenuButton" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Main Menu"
 script = ExtResource("2_4rn5c")
 
-[node name="QuitButton" type="Button" parent="BackgroundMovement/Control/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Quit"
 
-[node name="NextLevelButton" type="Button" parent="BackgroundMovement/Control/VBoxContainer"]
-custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
-text = "Next Level"
-
-[node name="Background" type="Control" parent="BackgroundMovement/Control"]
-layout_mode = 2
-anchors_preset = 0
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = -20.0
-grow_horizontal = 2
-
-[node name="TextureRect" type="TextureRect" parent="BackgroundMovement/Control/Background"]
+[node name="Background" type="Control" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 333.0
-offset_top = 90.0
-offset_right = 527.0
-offset_bottom = 115.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/Background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -245.0
+offset_top = 56.0
+offset_right = -51.0
+offset_bottom = 81.0
 grow_horizontal = 2
 scale = Vector2(2.5, 2.5)
 pivot_offset = Vector2(0, -60)
 texture = ExtResource("2_h7uxa")
 stretch_mode = 3
 
-[connection signal="pressed" from="BackgroundMovement/Control/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="BackgroundMovement/Control/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="BackgroundMovement/Control/VBoxContainer/NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

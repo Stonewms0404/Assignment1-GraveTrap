@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bebe2qnw3laow"]
 
 [ext_resource type="Texture2D" uid="uid://ckgd1j68et3py" path="res://Assets/Player/Heart.png" id="1_lti41"]
-[ext_resource type="Script" path="res://Levels/Scripts/Heart.cs" id="2_h2sy7"]
+[ext_resource type="Script" uid="uid://dxtmy22asih2n" path="res://Levels/Scripts/Heart.cs" id="2_h2sy7"]
 
 [sub_resource type="Animation" id="Animation_6yyw2"]
 resource_name = "PlayerHit"
@@ -35,8 +35,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_akyl2"]
 _data = {
-"PlayerHit": SubResource("Animation_6yyw2"),
-"RESET": SubResource("Animation_av67b")
+&"PlayerHit": SubResource("Animation_6yyw2"),
+&"RESET": SubResource("Animation_av67b")
 }
 
 [node name="Heart1" type="TextureRect" node_paths=PackedStringArray("anim")]

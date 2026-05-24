@@ -6,7 +6,7 @@ public partial class PlayerCamera : Camera2D
 	[Export]
 	public AnimationPlayer anim;
 
-	public void Hit()
+    public void Hit()
 	{
 		Random rand = new Random();
 		int num = rand.Next(1,3);

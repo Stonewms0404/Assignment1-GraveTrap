@@ -1,37 +1,21 @@
-[gd_scene load_steps=12 format=3 uid="uid://mkq224bt2hnt"]
+[gd_scene load_steps=8 format=3 uid="uid://mkq224bt2hnt"]
 
-[ext_resource type="Script" path="res://Levels/Scripts/MainMenu.cs" id="1_w4uj5"]
-[ext_resource type="Script" path="res://Levels/Scripts/Button.cs" id="2_hw5i3"]
-[ext_resource type="Texture2D" uid="uid://75qcadlkvnr" path="res://Assets/Tiles/GraveTrap.png" id="2_q6x8i"]
 [ext_resource type="PackedScene" uid="uid://ys0p5xf0gbum" path="res://Levels/Menus/Parallax.tscn" id="3_hf2u7"]
-[ext_resource type="Script" path="res://Levels/Scripts/BackgroundMovement.cs" id="4_41orb"]
-[ext_resource type="Texture2D" uid="uid://da8es601c5y8a" path="res://Assets/Tiles/StartGrave.png" id="5_bijte"]
-[ext_resource type="Texture2D" uid="uid://br0be2kjhh2j4" path="res://Assets/Tiles/CreditsGrave.png" id="7_oj3qt"]
-[ext_resource type="Texture2D" uid="uid://bdjpjoyii3xft" path="res://Assets/Tiles/QuitGrave.png" id="8_17brv"]
+[ext_resource type="PackedScene" uid="uid://bri1iikri08ji" path="res://Levels/Menus/MainMenuUI.tscn" id="3_vaygb"]
+[ext_resource type="Script" uid="uid://dx0h3052wwms8" path="res://Levels/Scripts/BackgroundMovement.cs" id="4_41orb"]
 [ext_resource type="AudioStream" uid="uid://bi0xku44cff2f" path="res://Assets/Audio/ForestWalk-320bit(chosic.com).mp3" id="9_sprhm"]
 [ext_resource type="AudioStream" uid="uid://chkid3b1gsnej" path="res://Assets/Audio/SFX/powerUp.wav" id="10_tn6kk"]
+[ext_resource type="Script" uid="uid://bs1gs2s3w0amc" path="res://Levels/Scripts/Global.cs" id="11_lxs4f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_45lb5"]
 
-[node name="Menu" type="Control" node_paths=PackedStringArray("StartButton", "Music", "StartGameSound", "StartTimer")]
-layout_direction = 2
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_w4uj5")
-StartButton = NodePath("BackgroundMovement/VBoxContainer/StartButton")
-Music = NodePath("Music")
-StartGameSound = NodePath("StartGameSound")
-StartTimer = NodePath("StartTimer")
+[node name="Node2D" type="Node2D"]
 
 [node name="Parallax" parent="." instance=ExtResource("3_hf2u7")]
 position = Vector2(576, -90)
 
 [node name="BackgroundMovement" type="CharacterBody2D" parent="."]
-position = Vector2(576, 0)
+position = Vector2(0, -306)
 script = ExtResource("4_41orb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundMovement"]
@@ -39,61 +23,20 @@ position = Vector2(1, 357)
 shape = SubResource("CircleShape2D_45lb5")
 
 [node name="Camera2D" type="Camera2D" parent="BackgroundMovement"]
-position = Vector2(0, 18)
-offset = Vector2(0, 60)
-zoom = Vector2(1.2, 1.2)
+anchor_mode = 0
+zoom = Vector2(1.4, 1.4)
 editor_draw_limits = true
 
-[node name="VBoxContainer" type="HBoxContainer" parent="BackgroundMovement"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -454.0
-offset_top = 207.5
-offset_right = 454.0
-offset_bottom = 440.5
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="BackgroundMovement"]
 
-[node name="StartButton" type="Button" parent="BackgroundMovement/VBoxContainer"]
-custom_minimum_size = Vector2(300, 75)
-layout_mode = 2
-icon = ExtResource("5_bijte")
-flat = true
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("2_hw5i3")
-
-[node name="CreditsButton" type="Button" parent="BackgroundMovement/VBoxContainer"]
-custom_minimum_size = Vector2(300, 75)
-layout_mode = 2
-icon = ExtResource("7_oj3qt")
-flat = true
-icon_alignment = 1
-expand_icon = true
-
-[node name="QuitButton" type="Button" parent="BackgroundMovement/VBoxContainer"]
-custom_minimum_size = Vector2(300, 75)
-layout_mode = 2
-icon = ExtResource("8_17brv")
-flat = true
-icon_alignment = 1
-expand_icon = true
-
-[node name="Background" type="Control" parent="BackgroundMovement"]
-layout_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-grow_horizontal = 2
-
-[node name="GraveTrap" type="Sprite2D" parent="BackgroundMovement/Background"]
-position = Vector2(0, -194)
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("2_q6x8i")
+[node name="Menu" parent="BackgroundMovement/CanvasLayer" node_paths=PackedStringArray("Music", "StartGameSound", "StartTimer") instance=ExtResource("3_vaygb")]
+anchors_preset = -1
+grow_horizontal = 1
+grow_vertical = 1
+Music = NodePath("../../../Music")
+StartGameSound = NodePath("../../../StartGameSound")
+StartTimer = NodePath("../../../StartTimer")
+metadata/_edit_use_anchors_ = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_sprhm")
@@ -106,7 +49,7 @@ volume_db = -10.0
 
 [node name="StartTimer" type="Timer" parent="."]
 
-[connection signal="pressed" from="BackgroundMovement/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="BackgroundMovement/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="BackgroundMovement/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[node name="Global" type="Node" parent="."]
+script = ExtResource("11_lxs4f")
+
+[connection signal="timeout" from="StartTimer" to="BackgroundMovement/CanvasLayer/Menu" method="_on_start_timer_timeout"]

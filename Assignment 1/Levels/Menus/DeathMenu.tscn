@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://b1h3v65buu22r"]
 
-[ext_resource type="Script" path="res://Levels/Scripts/DeathMenu.cs" id="1_adsvy"]
-[ext_resource type="Script" path="res://Levels/Scripts/Button.cs" id="2_hyg6p"]
+[ext_resource type="Script" uid="uid://cl0kx1egj4vh5" path="res://Levels/Scripts/DeathMenu.cs" id="1_adsvy"]
+[ext_resource type="Script" uid="uid://dyd48yffy8ebu" path="res://Levels/Scripts/Button.cs" id="2_hyg6p"]
 [ext_resource type="AudioStream" uid="uid://djnb6ms83qxt1" path="res://Assets/Audio/Colorful-Flowers(chosic.com).mp3" id="3_yh0v0"]
-[ext_resource type="Script" path="res://Levels/Scripts/BackgroundMovement.cs" id="4_2mlov"]
+[ext_resource type="Script" uid="uid://dx0h3052wwms8" path="res://Levels/Scripts/BackgroundMovement.cs" id="4_2mlov"]
 [ext_resource type="PackedScene" uid="uid://ys0p5xf0gbum" path="res://Levels/Menus/Parallax.tscn" id="4_m541d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ei04p"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cckp8801goic4"]
 
-[ext_resource type="Script" path="res://Obstacles/Thorns.cs" id="1_xj612"]
+[ext_resource type="Script" uid="uid://barpghptediy1" path="res://Obstacles/Thorns.cs" id="1_xj612"]
 [ext_resource type="PackedScene" uid="uid://b4rbm0kyxhucb" path="res://Characters/Components/attack_component.tscn" id="3_gjwom"]
 [ext_resource type="PackedScene" uid="uid://ddbpaitn54cbp" path="res://Characters/Components/health_component.tscn" id="4_8wewg"]
 

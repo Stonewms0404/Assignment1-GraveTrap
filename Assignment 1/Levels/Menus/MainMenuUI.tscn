@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://bri1iikri08ji"]
+
+[ext_resource type="Script" uid="uid://c8wlc1jsc7bx1" path="res://Levels/Scripts/MainMenu.cs" id="1_5yxl3"]
+[ext_resource type="Texture2D" uid="uid://75qcadlkvnr" path="res://Assets/Tiles/GraveTrap.png" id="2_usoen"]
+[ext_resource type="Texture2D" uid="uid://da8es601c5y8a" path="res://Assets/Tiles/StartGrave.png" id="3_ymty8"]
+[ext_resource type="Script" uid="uid://dyd48yffy8ebu" path="res://Levels/Scripts/Button.cs" id="4_yorr3"]
+[ext_resource type="Texture2D" uid="uid://br0be2kjhh2j4" path="res://Assets/Tiles/CreditsGrave.png" id="5_5f4ky"]
+[ext_resource type="Texture2D" uid="uid://bdjpjoyii3xft" path="res://Assets/Tiles/QuitGrave.png" id="6_lbo5l"]
+
+[node name="Menu" type="Control" node_paths=PackedStringArray("StartButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+script = ExtResource("1_5yxl3")
+StartButton = NodePath("HBoxContainer/StartButton")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(600, 295)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -295.0
+offset_top = 24.0
+offset_right = 305.0
+offset_bottom = 319.0
+grow_horizontal = 2
+texture = ExtResource("2_usoen")
+expand_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="StartButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("3_ymty8")
+flat = true
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("4_yorr3")
+
+[node name="CreditsButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("5_5f4ky")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="QuitButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("6_lbo5l")
+flat = true
+expand_icon = true
+
+[connection signal="pressed" from="HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

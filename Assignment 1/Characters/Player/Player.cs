@@ -1,15 +1,17 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 public partial class Player : CharacterBody2D
 {
 	//Normal Movement varibles.
-	public float Speed = 15.0f;
-	public float MaxSpeed = 300.0f;
+	public float Speed = 30.0f;
+	public float MaxSpeed = 350.0f;
 	public int facing = 1;
-	public const float JumpVelocity = -600.0f;
+	public const float JumpVelocity = -800.0f;
 	public float movement = 0.0f;
 	public bool CanDash = true;
+	public bool IsDashing = false;
 	public bool isSwinging = false;
 	public bool isGrounded = true;
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -44,9 +46,23 @@ public partial class Player : CharacterBody2D
 	public AudioStreamPlayer Hurt;
 	[Export]
 	public GpuParticles2D HitParticles;
-	
-	//When the game first loads.
-	public override void _Ready()
+	[Export]
+	public CollisionShape2D Hitbox;
+    [Export]
+    float maxCoyoteTime = 0.1f;
+    float coyoteTimer = 0;
+
+    [Export]
+    float maxDashTime = 0.5f;
+    float dashTimer = 0;
+
+    [Export]
+    float maxInvicibilityTime = 0.75f;
+    float invicibilityTimer = 0;
+	bool isInvincible = false;
+
+    //When the game first loads.
+    public override void _Ready()
 	{
 		sword.coll.Disabled = true;
 		Health.SetHealth(5);
@@ -65,14 +81,46 @@ public partial class Player : CharacterBody2D
 
 		int direction = (int)MoveInput;
 
-		if (IsOnFloor() && !isGrounded)
-		{
-			isGrounded = true;
-			EmitSignal("PlayLandParticle", GlobalPosition);
-		}
+        if (IsDashing)
+        {
+            dashTimer += (float)delta;
+            if (dashTimer > maxDashTime)
+            {
+                dashTimer = 0;
+                IsDashing = false;
+            }
+        }
 
-		//Creates the move direction by the speed and direction.
-		if (MoveInput != 0)
+        if (isInvincible)
+        {
+            invicibilityTimer += (float)delta;
+            if (invicibilityTimer > maxInvicibilityTime)
+            {
+                invicibilityTimer = 0;
+                isInvincible = false;
+            }
+        }
+
+        if (IsOnFloor())
+		{
+			velocity.Y = 0;
+			if (!isGrounded)
+			{
+				isGrounded = true;
+				EmitSignal("PlayLandParticle", GlobalPosition);
+			}
+		}
+		else if (!IsOnFloor())// Add the gravity.
+        {
+            velocity.Y += gravity * (float)delta;
+            if (isGrounded)
+            {
+                isGrounded = CoyoteTime((float)delta);
+            }
+        }
+
+        //Creates the move direction by the speed and direction.
+        if (MoveInput != 0)
 		{
 			if (MoveInput < 0)
 			{
@@ -111,15 +159,9 @@ public partial class Player : CharacterBody2D
 			velocity.X = movement;
 		}
 
-		// Add the gravity.
-		if (!IsOnFloor())
-		{
-			isGrounded = false;
-			velocity.Y += gravity * (float)delta;
-		}
 
 		// Handle Jump.
-		if (Input.IsActionJustPressed("jump") && IsOnFloor())
+		if (Input.IsActionJustPressed("jump") && isGrounded)
 		{
 			velocity = Jump(velocity);
 		}
@@ -152,10 +194,9 @@ public partial class Player : CharacterBody2D
 		// Calls the function for dashing and checks input within the dashing function.
 		velocity = Dash(velocity);
 		
-		//GD.Print(facing);
 		Velocity = velocity;
-		Velocity.Normalized();
 		MoveAndSlide();
+		await Task.Yield();
 	}
 
 	//Animation Function.
@@ -201,6 +242,17 @@ public partial class Player : CharacterBody2D
 		velocity.Y = JumpVelocity;
 		return velocity;
 	}
+
+	protected bool CoyoteTime(float delta)
+	{
+		if (coyoteTimer >= maxCoyoteTime)
+		{
+			coyoteTimer = 0;
+			return false;
+		}
+		coyoteTimer += delta;
+		return true;
+	}
 	
 	//Player Death Function for anything related to the player's death.
 	public void Death()
@@ -216,6 +268,7 @@ public partial class Player : CharacterBody2D
 		{
 			dash.Playing = true;
 			CanDash = false;
+			IsDashing = true;
 			velocity.X = 15000.0f * facing;
 			velocity.Y = 0;
 			EmitSignal("StartDashCooldown");
@@ -231,18 +284,22 @@ public partial class Player : CharacterBody2D
 
 	public void HitPlayer(int amount, String DeathBy)
 	{
-		Health.TookDamage(amount);
-		if (Health.GetHealth() <= 0)
+		if (!isInvincible)
 		{
-			EmitSignal("Hit", Health.GetHealth());
-			Death();
-		}
-		else
-		{
-			HitParticles.Emitting = true;
-			Hurt.Playing = true;
-			camera.Hit();
-			EmitSignal("Hit", Health.GetHealth());
+			isInvincible = true;
+			Health.TookDamage(amount);
+			if (Health.GetHealth() <= 0)
+			{
+				EmitSignal("Hit", Health.GetHealth());
+				Death();
+			}
+			else
+			{
+				HitParticles.Emitting = true;
+				Hurt.Playing = true;
+				camera.Hit();
+				EmitSignal("Hit", Health.GetHealth());
+			}
 		}
 	}
 

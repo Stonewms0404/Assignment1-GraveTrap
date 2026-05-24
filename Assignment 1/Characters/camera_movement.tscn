@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkaso5i7qme5u"]
+
+[ext_resource type="Script" uid="uid://b1yv6j44osuic" path="res://Levels/CameraMovement.cs" id="1_6nm8o"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_06oun"]
+
+[node name="CameraMovement" type="CharacterBody2D"]
+scale = Vector2(4, 4)
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
+slide_on_ceiling = false
+floor_stop_on_slope = false
+floor_block_on_wall = false
+script = ExtResource("1_6nm8o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(97, 0)
+shape = SubResource("SegmentShape2D_06oun")

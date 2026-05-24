@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://de44t4tnnbjlk"]
 
-[ext_resource type="Script" path="res://Levels/Scripts/PauseMenu.cs" id="1_rihny"]
-[ext_resource type="Script" path="res://Levels/Scripts/Button.cs" id="2_8u3gj"]
+[ext_resource type="Script" uid="uid://boyhdhbx4fgnd" path="res://Levels/Scripts/PauseMenu.cs" id="1_rihny"]
+[ext_resource type="Script" uid="uid://dyd48yffy8ebu" path="res://Levels/Scripts/Button.cs" id="2_8u3gj"]
 
 [node name="PauseMenu" type="Control" node_paths=PackedStringArray("ResumeButton")]
 process_mode = 2
